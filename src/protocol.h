@@ -16,8 +16,8 @@ enum protocol_type_t: char {
 
 struct protocol_packet_base {
     char protocol_header[3];
-    protocol_type_t protocol_type;
     char protocol_version;
+    protocol_type_t protocol_type;
 };
 
 IPAddress IP_BROADCAST(255, 255, 255, 255);
