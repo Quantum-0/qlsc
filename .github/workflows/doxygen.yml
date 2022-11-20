@@ -22,7 +22,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - name: "Doxygen"
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Doxygen
       run: |
         sudo apt-get install -y doxygen
         pwd
