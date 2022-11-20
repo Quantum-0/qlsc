@@ -30,17 +30,9 @@ jobs:
         pwd
         ls -al
         doxygen Doxyfile
-    - name: Doxygen
-      uses: mattnotmitt/doxygen-action@v1.9.4
+        
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3.7.3
       with:
-        #github_token: ${{ secrets.GITHUB_TOKEN }}
-        doxyfile-path: 'Doxyfile'
-        working-directory: 'src'
-        #publish_dir: ./public
-        
-#     - name: Deploy
-#       uses: peaceiris/actions-gh-pages@v3.7.3
-#       with:
-#         github_token: ${{ secrets.GITHUB_TOKEN }}
-#         publish_dir: ./DOCS
-        
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./DOCS/html
