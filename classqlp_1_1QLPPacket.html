@@ -83,27 +83,27 @@ Collaboration diagram for qlp.QLPPacket:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af8d4c658fd16e4fc6e7054d3f5028d87"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1QLPPacket.html#af8d4c658fd16e4fc6e7054d3f5028d87">crc</a> (self)</td></tr>
-<tr class="separator:af8d4c658fd16e4fc6e7054d3f5028d87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39bbc62eb958478bd597fc449b9d41cb"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1QLPPacket.html#a39bbc62eb958478bd597fc449b9d41cb">serialize</a> (self)</td></tr>
-<tr class="separator:a39bbc62eb958478bd597fc449b9d41cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea2565e0fa7d4e7cfc731f1118b43de0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1QLPPacket.html#aea2565e0fa7d4e7cfc731f1118b43de0">crc</a> (self)</td></tr>
+<tr class="separator:aea2565e0fa7d4e7cfc731f1118b43de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b447ac5fa4ce3bcbf085828c8ad0cfd"><td class="memItemLeft" align="right" valign="top">bytes&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1QLPPacket.html#a3b447ac5fa4ce3bcbf085828c8ad0cfd">serialize</a> (self, *bool with_crc=True)</td></tr>
+<tr class="separator:a3b447ac5fa4ce3bcbf085828c8ad0cfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3dd529643d3b3dfa2c8260307e878a8e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1QLPPacket.html#a3dd529643d3b3dfa2c8260307e878a8e">parse</a> (cls, bytes data, Optional[str] source=None)</td></tr>
 <tr class="separator:a3dd529643d3b3dfa2c8260307e878a8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:ae8abdec2f14dea0ff6ae97d0d90be889"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1QLPPacket.html#ae8abdec2f14dea0ff6ae97d0d90be889">QLPVer</a></td></tr>
-<tr class="separator:ae8abdec2f14dea0ff6ae97d0d90be889"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01951398101bdc852f8bb9a5bd30337a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1QLPPacket.html#a01951398101bdc852f8bb9a5bd30337a">ProtoVer</a></td></tr>
+<tr class="separator:a01951398101bdc852f8bb9a5bd30337a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="af8d4c658fd16e4fc6e7054d3f5028d87"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8d4c658fd16e4fc6e7054d3f5028d87">&#9670;&nbsp;</a></span>crc()</h2>
+<a id="aea2565e0fa7d4e7cfc731f1118b43de0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea2565e0fa7d4e7cfc731f1118b43de0">&#9670;&nbsp;</a></span>crc()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def qlp.QLPPacket.crc </td>
+          <td class="memname"> int qlp.QLPPacket.crc </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -148,18 +148,28 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a39bbc62eb958478bd597fc449b9d41cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39bbc62eb958478bd597fc449b9d41cb">&#9670;&nbsp;</a></span>serialize()</h2>
+<a id="a3b447ac5fa4ce3bcbf085828c8ad0cfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b447ac5fa4ce3bcbf085828c8ad0cfd">&#9670;&nbsp;</a></span>serialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def qlp.QLPPacket.serialize </td>
+          <td class="memname"> bytes qlp.QLPPacket.serialize </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em></td><td>)</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">*bool &#160;</td>
+          <td class="paramname"><em>with_crc</em> = <code>True</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -167,8 +177,8 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ae8abdec2f14dea0ff6ae97d0d90be889"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8abdec2f14dea0ff6ae97d0d90be889">&#9670;&nbsp;</a></span>QLPVer</h2>
+<a id="a01951398101bdc852f8bb9a5bd30337a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01951398101bdc852f8bb9a5bd30337a">&#9670;&nbsp;</a></span>ProtoVer</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -177,7 +187,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">qlp.QLPPacket.QLPVer</td>
+          <td class="memname">qlp.QLPPacket.ProtoVer</td>
         </tr>
       </table>
   </td>
@@ -195,7 +205,7 @@ Static Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 20 2022 23:25:05 for Quantum-Smart-Clock by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+Generated on Sun Nov 20 2022 23:25:22 for Quantum-Smart-Clock by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
 </small></address>
 </body>
 </html>

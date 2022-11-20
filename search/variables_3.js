@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['control_98',['CONTROL',['../classqlp_1_1QLPPacketType.html#ad5b4eeb392ede6e4199421dac2a49566',1,'qlp::QLPPacketType']]]
+  ['control_96',['CONTROL',['../classqlp_1_1PacketType.html#ae7ff608fcfd661ff8949776e7b5159fe',1,'qlp::PacketType']]]
 ];

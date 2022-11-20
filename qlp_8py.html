@@ -75,11 +75,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1QLPPacketType.html">qlp.QLPPacketType</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1PacketType.html">qlp.PacketType</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1QLPDiscoveryPacket.html">qlp.QLPDiscoveryPacket</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1QLSCDevice.html">qlp.QLSCDevice</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1QLPPacket.html">qlp.QLPPacket</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -91,28 +89,28 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:adb034029ecf74bad2e2f29cc153514ea"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqlp.html#adb034029ecf74bad2e2f29cc153514ea">qlp.calc_crc</a> (bytes data)</td></tr>
-<tr class="separator:adb034029ecf74bad2e2f29cc153514ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ef8a2d55200393c7bb81242d1fb802c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqlp.html#a8ef8a2d55200393c7bb81242d1fb802c">qlp.send_packet</a> (QLPPacket packet)</td></tr>
-<tr class="separator:a8ef8a2d55200393c7bb81242d1fb802c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a436a2e75bb81e6040c037b98f9dafecc"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqlp.html#a436a2e75bb81e6040c037b98f9dafecc">qlp.send_packet</a> (Union[QLPPacket, bytes] packet)</td></tr>
+<tr class="separator:a436a2e75bb81e6040c037b98f9dafecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a009af0226f9458dac22e39d8b7b22f17"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqlp.html#a009af0226f9458dac22e39d8b7b22f17">qlp.send_anybody_here</a> ()</td></tr>
 <tr class="separator:a009af0226f9458dac22e39d8b7b22f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3fcb3b7fd486816cd8519b25ca0c789"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqlp.html#aa3fcb3b7fd486816cd8519b25ca0c789">qlp.listen</a> (int time)</td></tr>
 <tr class="separator:aa3fcb3b7fd486816cd8519b25ca0c789"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9679d936ba4f403c4a1b1b4c749008ec"><td class="memItemLeft" align="right" valign="top">List[QLSCDevice]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqlp.html#a9679d936ba4f403c4a1b1b4c749008ec">qlp.discover_all_devices</a> ()</td></tr>
-<tr class="separator:a9679d936ba4f403c4a1b1b4c749008ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14585e3a4f0c215334f59bb8cb289196"><td class="memItemLeft" align="right" valign="top">Set[str]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqlp.html#a14585e3a4f0c215334f59bb8cb289196">qlp.discover_all_devices</a> (int timeout=3)</td></tr>
+<tr class="separator:a14585e3a4f0c215334f59bb8cb289196"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ac89d873c3c481f5c551a3c95969698c3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqlp.html#ac89d873c3c481f5c551a3c95969698c3">qlp.QLPVer</a> = NewType('QLPVer', int)</td></tr>
-<tr class="separator:ac89d873c3c481f5c551a3c95969698c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4af0754afe2d669ed8bb30c21a4f041"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqlp.html#ab4af0754afe2d669ed8bb30c21a4f041">qlp.__QLP_PORT__</a> = 52075</td></tr>
 <tr class="separator:ab4af0754afe2d669ed8bb30c21a4f041"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91577f5cded6c8c159d41b3a04b22a86"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqlp.html#a91577f5cded6c8c159d41b3a04b22a86">qlp.__PROTO_HEADER__</a> = b'QLP'</td></tr>
+<tr class="separator:a91577f5cded6c8c159d41b3a04b22a86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae51020a208d90cceb8627aa07c7d8e99"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqlp.html#ae51020a208d90cceb8627aa07c7d8e99">qlp.ProtoVer</a> = NewType('ProtoVer', int)</td></tr>
+<tr class="separator:ae51020a208d90cceb8627aa07c7d8e99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 20 2022 23:25:05 for Quantum-Smart-Clock by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+Generated on Sun Nov 20 2022 23:25:22 for Quantum-Smart-Clock by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
 </small></address>
 </body>
 </html>

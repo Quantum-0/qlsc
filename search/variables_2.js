@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['broadcast_97',['BROADCAST',['../classqlp_1_1QLPPacketType.html#a81b070978e35e9e0d3d6334c8afd6186',1,'qlp::QLPPacketType']]]
+  ['broadcast_95',['BROADCAST',['../classqlp_1_1PacketType.html#a8b2eb663545d6738af3a2108b8a57cd0',1,'qlp::PacketType']]]
 ];
