@@ -97,18 +97,35 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a00e5290dde88ebff022deeeed4fd054e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8h.html#a00e5290dde88ebff022deeeed4fd054e">protocol_type_t</a> : char { <a class="el" href="protocol_8h.html#a00e5290dde88ebff022deeeed4fd054ea05eb094889c0adc67ccc19ea72284315">DISCOVERY</a> = 1
+<tr class="memitem:a00e5290dde88ebff022deeeed4fd054e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8h.html#a00e5290dde88ebff022deeeed4fd054e">protocol_type_t</a> : char { <a class="el" href="protocol_8h.html#a00e5290dde88ebff022deeeed4fd054eac157bdf0b85a40d2619cbc8bc1ae5fe2">NONE</a> = 0
+, <a class="el" href="protocol_8h.html#a00e5290dde88ebff022deeeed4fd054ea05eb094889c0adc67ccc19ea72284315">DISCOVERY</a> = 1
 , <a class="el" href="protocol_8h.html#a00e5290dde88ebff022deeeed4fd054ea78386e426adecb3fd26350119a3cb7c2">BROADCAST</a> = 2
 , <a class="el" href="protocol_8h.html#a00e5290dde88ebff022deeeed4fd054eaf722a5faa36087c914da53ebe4711f08">CONTROL</a> = 3
  }</td></tr>
 <tr class="separator:a00e5290dde88ebff022deeeed4fd054e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e2c64a746e8f583855d56f1f333b580"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8h.html#a0e2c64a746e8f583855d56f1f333b580">common_answer_code_t</a> : char { <br />
+&#160;&#160;<a class="el" href="protocol_8h.html#a0e2c64a746e8f583855d56f1f333b580a2bc49ec37d6a5715dd23e85f1ff5bb59">OK</a> = 0
+, <a class="el" href="protocol_8h.html#a0e2c64a746e8f583855d56f1f333b580aaea842af3c3103cad35f897e3378a4e4">VERSION_ERROR</a> = 1
+, <a class="el" href="protocol_8h.html#a0e2c64a746e8f583855d56f1f333b580a8a393db133e073ad8bac2f92e78d6f5d">CRC_ERROR</a> = 2
+, <a class="el" href="protocol_8h.html#a0e2c64a746e8f583855d56f1f333b580ab93eea47b73951b8f4276037231a34c4">LENGTH_ERROR</a> = 4
+, <br />
+&#160;&#160;<a class="el" href="protocol_8h.html#a0e2c64a746e8f583855d56f1f333b580a840ab3c154edddaaa2fec2bd24c9a47a">INVALID_HEADER_ERROR</a> = 5
+, <a class="el" href="protocol_8h.html#a0e2c64a746e8f583855d56f1f333b580a5afe8fe5e97b1f35a9bd1a535611ddb1">INVALID_PACKET_TYPE</a> = 6
+, <a class="el" href="protocol_8h.html#a0e2c64a746e8f583855d56f1f333b580abe760b0a0ddca24057cc39ceb94aff45">OTHER_ERROR</a> = 0xFF
+<br />
+ }</td></tr>
+<tr class="separator:a0e2c64a746e8f583855d56f1f333b580"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a2fa22aa34f9640adb538a19f5bf13d56"><td class="memItemLeft" align="right" valign="top">IPAddress&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8h.html#a2fa22aa34f9640adb538a19f5bf13d56">IP_BROADCAST</a> (255, 255, 255, 255)</td></tr>
 <tr class="separator:a2fa22aa34f9640adb538a19f5bf13d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa52e9da74d819fa5b087ee1104de26a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8h.html#aa52e9da74d819fa5b087ee1104de26a2">string2hexString</a> (char *input, char *output)</td></tr>
-<tr class="separator:aa52e9da74d819fa5b087ee1104de26a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c7dcfda9c65e964777aa0a547cf22c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8h.html#a0c7dcfda9c65e964777aa0a547cf22c0">sendPacket</a> (<a class="el" href="protocol_8h.html#a00e5290dde88ebff022deeeed4fd054e">protocol_type_t</a> packet_type, char *data, int data_length)</td></tr>
+<tr class="separator:a0c7dcfda9c65e964777aa0a547cf22c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a377144d09ec920b2e56fbb3b1d33e06d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8h.html#a377144d09ec920b2e56fbb3b1d33e06d">sendCommonAnswer</a> (<a class="el" href="protocol_8h.html#a00e5290dde88ebff022deeeed4fd054e">protocol_type_t</a> packet_type, <a class="el" href="protocol_8h.html#a0e2c64a746e8f583855d56f1f333b580">common_answer_code_t</a> code, char *data, int data_length)</td></tr>
+<tr class="separator:a377144d09ec920b2e56fbb3b1d33e06d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a445cde97278886994416797a09b97be0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8h.html#a445cde97278886994416797a09b97be0">sendCommonAnswer</a> (<a class="el" href="protocol_8h.html#a00e5290dde88ebff022deeeed4fd054e">protocol_type_t</a> packet_type, <a class="el" href="protocol_8h.html#a0e2c64a746e8f583855d56f1f333b580">common_answer_code_t</a> code)</td></tr>
+<tr class="separator:a445cde97278886994416797a09b97be0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5b78d7377a1dc23bdd4709c5ed7fa60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8h.html#aa5b78d7377a1dc23bdd4709c5ed7fa60">handle_udp</a> ()</td></tr>
 <tr class="separator:aa5b78d7377a1dc23bdd4709c5ed7fa60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -124,6 +141,29 @@ Variables</h2></td></tr>
 <tr class="separator:ae2719168871b1327c58259f1d4c68577"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a0e2c64a746e8f583855d56f1f333b580"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e2c64a746e8f583855d56f1f333b580">&#9670;&nbsp;</a></span>common_answer_code_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="protocol_8h.html#a0e2c64a746e8f583855d56f1f333b580">common_answer_code_t</a> : char</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0e2c64a746e8f583855d56f1f333b580a2bc49ec37d6a5715dd23e85f1ff5bb59"></a>OK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0e2c64a746e8f583855d56f1f333b580aaea842af3c3103cad35f897e3378a4e4"></a>VERSION_ERROR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0e2c64a746e8f583855d56f1f333b580a8a393db133e073ad8bac2f92e78d6f5d"></a>CRC_ERROR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0e2c64a746e8f583855d56f1f333b580ab93eea47b73951b8f4276037231a34c4"></a>LENGTH_ERROR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0e2c64a746e8f583855d56f1f333b580a840ab3c154edddaaa2fec2bd24c9a47a"></a>INVALID_HEADER_ERROR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0e2c64a746e8f583855d56f1f333b580a5afe8fe5e97b1f35a9bd1a535611ddb1"></a>INVALID_PACKET_TYPE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0e2c64a746e8f583855d56f1f333b580abe760b0a0ddca24057cc39ceb94aff45"></a>OTHER_ERROR&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <a id="a00e5290dde88ebff022deeeed4fd054e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a00e5290dde88ebff022deeeed4fd054e">&#9670;&nbsp;</a></span>protocol_type_t</h2>
 
@@ -136,7 +176,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a00e5290dde88ebff022deeeed4fd054ea05eb094889c0adc67ccc19ea72284315"></a>DISCOVERY&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a00e5290dde88ebff022deeeed4fd054eac157bdf0b85a40d2619cbc8bc1ae5fe2"></a>NONE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a00e5290dde88ebff022deeeed4fd054ea05eb094889c0adc67ccc19ea72284315"></a>DISCOVERY&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a00e5290dde88ebff022deeeed4fd054ea78386e426adecb3fd26350119a3cb7c2"></a>BROADCAST&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a00e5290dde88ebff022deeeed4fd054eaf722a5faa36087c914da53ebe4711f08"></a>CONTROL&#160;</td><td class="fielddoc"></td></tr>
 </table>
@@ -201,23 +242,97 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aa52e9da74d819fa5b087ee1104de26a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa52e9da74d819fa5b087ee1104de26a2">&#9670;&nbsp;</a></span>string2hexString()</h2>
+<a id="a445cde97278886994416797a09b97be0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a445cde97278886994416797a09b97be0">&#9670;&nbsp;</a></span>sendCommonAnswer() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void string2hexString </td>
+          <td class="memname">void sendCommonAnswer </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>input</em>, </td>
+          <td class="paramtype"><a class="el" href="protocol_8h.html#a00e5290dde88ebff022deeeed4fd054e">protocol_type_t</a>&#160;</td>
+          <td class="paramname"><em>packet_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="protocol_8h.html#a0e2c64a746e8f583855d56f1f333b580">common_answer_code_t</a>&#160;</td>
+          <td class="paramname"><em>code</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a377144d09ec920b2e56fbb3b1d33e06d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a377144d09ec920b2e56fbb3b1d33e06d">&#9670;&nbsp;</a></span>sendCommonAnswer() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sendCommonAnswer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="protocol_8h.html#a00e5290dde88ebff022deeeed4fd054e">protocol_type_t</a>&#160;</td>
+          <td class="paramname"><em>packet_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="protocol_8h.html#a0e2c64a746e8f583855d56f1f333b580">common_answer_code_t</a>&#160;</td>
+          <td class="paramname"><em>code</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>output</em>&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>data_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0c7dcfda9c65e964777aa0a547cf22c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c7dcfda9c65e964777aa0a547cf22c0">&#9670;&nbsp;</a></span>sendPacket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sendPacket </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="protocol_8h.html#a00e5290dde88ebff022deeeed4fd054e">protocol_type_t</a>&#160;</td>
+          <td class="paramname"><em>packet_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>data_length</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -289,7 +404,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 20 2022 21:49:55 for Quantum-Smart-Clock by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+Generated on Sun Nov 20 2022 23:25:05 for Quantum-Smart-Clock by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
 </small></address>
 </body>
 </html>
