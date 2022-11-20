@@ -22,8 +22,19 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Doxygen
-        uses: mattnotmitt/doxygen-action@v1.9.4
+    - name: "Doxygen"
+      run: |
+        sudo apt-get install -y doxygen
+        doxygen Doxyfile
+        
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3.7.3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./DOCS
+        
+      #- name: Doxygen
+        #uses: mattnotmitt/doxygen-action@v1.9.4
         # with:
           # github_token: ${{ secrets.GITHUB_TOKEN }}
           # doxyfile-path: './Doxyfile'
