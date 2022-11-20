@@ -27,5 +27,5 @@ jobs:
         with:
           # github_token: ${{ secrets.GITHUB_TOKEN }}
           doxyfile-path: 'Doxygen'
-          working-directory: 'src/'
+          working-directory: '.'
           # publish_dir: ./public
