@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['setup_49',['setup',['../main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d',1,'main.cpp']]],
-  ['string2hexstring_50',['string2hexString',['../protocol_8h.html#aa52e9da74d819fa5b087ee1104de26a2',1,'protocol.h']]]
+  ['ota_5finit_59',['ota_init',['../ota_8h.html#a23b4424c4425d20b3ce5a38692643871',1,'ota.h']]],
+  ['ota_5floop_60',['ota_loop',['../ota_8h.html#afc423ab006f28964d227702b9a5c9007',1,'ota.h']]]
 ];

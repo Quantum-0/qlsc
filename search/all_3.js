@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['d_3',['d',['../main_8cpp.html#a6f364afbe132c4ecfea48bde1b0618ba',1,'main.cpp']]],
-  ['discovery_4',['DISCOVERY',['../protocol_8h.html#a00e5290dde88ebff022deeeed4fd054ea05eb094889c0adc67ccc19ea72284315',1,'protocol.h']]]
+  ['calc_5fcrc_3',['calc_crc',['../namespaceqlp.html#adb034029ecf74bad2e2f29cc153514ea',1,'qlp']]],
+  ['control_4',['CONTROL',['../protocol_8h.html#a00e5290dde88ebff022deeeed4fd054eaf722a5faa36087c914da53ebe4711f08',1,'protocol.h']]]
 ];

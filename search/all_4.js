@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['handle_5fudp_5',['handle_udp',['../protocol_8h.html#aa5b78d7377a1dc23bdd4709c5ed7fa60',1,'protocol.h']]],
-  ['host_6',['host',['../main_8cpp.html#ae032e164f1daa754d6fbb79d59723931',1,'main.cpp']]]
+  ['d_5',['d',['../main_8cpp.html#a6f364afbe132c4ecfea48bde1b0618ba',1,'main.cpp']]],
+  ['discovery_6',['DISCOVERY',['../protocol_8h.html#a00e5290dde88ebff022deeeed4fd054ea05eb094889c0adc67ccc19ea72284315',1,'protocol.h']]]
 ];
