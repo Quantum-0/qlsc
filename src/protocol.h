@@ -8,10 +8,22 @@ char packetBuffer[UDP_TX_PACKET_MAX_SIZE + 1];
 WiFiUDP Udp;
 
 enum protocol_type_t: char {
+    NONE = 0,
     DISCOVERY = 1,
     BROADCAST = 2,
     CONTROL = 3,
     // RESPONSE = 4,
+};
+
+enum common_answer_code_t: char {
+    OK = 0,
+    VERSION_ERROR = 1,
+    CRC_ERROR = 2,
+    // ENCRYPTION_ERROR = 3, - когда впилю шифрование
+    LENGTH_ERROR = 4,
+    INVALID_HEADER_ERROR = 5,
+    INVALID_PACKET_TYPE = 6,
+    OTHER_ERROR = 0xFF,
 };
 
 struct protocol_packet_base {
@@ -22,22 +34,40 @@ struct protocol_packet_base {
 
 IPAddress IP_BROADCAST(255, 255, 255, 255);
 
-void string2hexString(char* input, char* output)
+void sendPacket(protocol_type_t packet_type, char* data, int data_length)
 {
-    int loop;
-    int i; 
-    
-    i=0;
-    loop=0;
-    
-    while(input[loop] != '\0')
-    {
-        sprintf((char*)(output+i),"%02X", input[loop]);
-        loop+=1;
-        i+=2;
-    }
-    //insert NULL at the end of the output string
-    output[i++] = '\0';
+    char crc = 0x39;
+    Udp.beginPacket(IP_BROADCAST, localPort);
+    Udp.write("QLP");
+    Udp.write(PROTOCOL_VERSION)
+    Udp.write(packet_type)
+    Udp.write(data)
+    crc ^= packet_type
+    for (size_t i = 0; i < data_length; i++)
+        crc ^= data[i];
+    Udp.write(crc)
+    Udp.endPacket();
+}
+
+void sendCommonAnswer(protocol_type_t packet_type, common_answer_code_t code, char* data, int data_length)
+{
+    char crc = 0xA9;
+    Udp.beginPacket(IP_BROADCAST, localPort);
+    Udp.write("QLP");
+    Udp.write(PROTOCOL_VERSION)
+    Udp.write(packet_type)
+    Udp.write(code)
+    Udp.write(data)
+    crc ^= packet_type
+    for (size_t i = 0; i < data_length; i++)
+        crc ^= data[i];
+    Udp.write(crc)
+    Udp.endPacket();
+}
+
+void sendCommonAnswer(protocol_type_t packet_type, common_answer_code_t code)
+{
+    sendCommonAnswer(packet_type, code, 0, 0);
 }
 
 void handle_udp()
@@ -47,60 +77,37 @@ void handle_udp()
     if (!packetSize)
         return;
 
-    strip.setPixelColor(0, 0x111111);
-    strip.show();
-    delay(2000);
-    
-    Udp.beginPacket(IP_BROADCAST, localPort);
-    Udp.write("recv123");
-    Udp.endPacket();
-
     // Read
     int n = Udp.read(packetBuffer, UDP_TX_PACKET_MAX_SIZE);
     packetBuffer[n] = 0;
 
-    Udp.beginPacket(IP_BROADCAST, localPort);
-    Udp.write(packetBuffer);
-    char packetBufferX2[packetSize*2+1];
-    string2hexString(packetBuffer, packetBufferX2);
-    Udp.write(packetBufferX2);
-    Udp.endPacket();
-
     if (n < 6)
     {
         // Incorrect packet size
-        Udp.beginPacket(IP_BROADCAST, localPort);
-        Udp.write("incorrect size");
-        Udp.endPacket();
+        sendCommonAnswer(protocol_type_t::NONE, common_answer_code_t::LENGTH_ERROR);
         return;
     }
 
     if (strncmp(((protocol_packet_base*)packetBuffer)->protocol_header, "QLP", 3) != 0)
     {
         // Incorrect protocol header
-        Udp.beginPacket(IP_BROADCAST, localPort);
-        Udp.write("incorrect header");
-        Udp.endPacket();
+        sendCommonAnswer(protocol_type_t::NONE, common_answer_code_t::INVALID_HEADER_ERROR);
         return;
     }
 
     protocol_type_t current_packet_type = ((protocol_packet_base*)packetBuffer)->protocol_type;
 
-    if ((char)(current_packet_type) > 3)
-    {
-        // Incorrect protocol type
-        Udp.beginPacket(IP_BROADCAST, localPort);
-        Udp.write("incorrect proto type");
-        Udp.endPacket();
-        return;
-    }
-
     if (((protocol_packet_base*)packetBuffer)->protocol_version != PROTOCOL_VERSION)
     {
         // Incorrect version
-        Udp.beginPacket(IP_BROADCAST, localPort);
-        Udp.write("incorrect ver");
-        Udp.endPacket();
+        sendCommonAnswer(protocol_type_t::NONE, common_answer_code_t::VERSION_ERROR);
+        return;
+    }
+
+    if ((char)(current_packet_type) > 3)
+    {
+        // Incorrect protocol type
+        sendCommonAnswer(protocol_type_t::NONE, common_answer_code_t::INVALID_PACKET_TYPE);
         return;
     }
 
@@ -112,27 +119,21 @@ void handle_udp()
     if (crc != packetBuffer[n-1])
     {
         // CRC ERROR
-        Udp.beginPacket(IP_BROADCAST, localPort);
-        Udp.write("incorrect crc\nMust be = ");
-        char str[5];
-        sprintf(str, "%d", crc);
-        Udp.write(str);
-        Udp.endPacket();
+        sendCommonAnswer(current_packet_type, common_answer_code_t::CRC_ERROR);
         return;
     }
 
     if (current_packet_type == protocol_type_t::DISCOVERY)
     {
-        if (strncmp(&packetBuffer[sizeof(protocol_packet_base)], "ABH", 3) == 0)  // QLP\x01\x01ABH\x41
+        if (strncmp(&packetBuffer[sizeof(protocol_packet_base)], "ABH", 3) == 0)
         {
             // Received ABH?
-            Udp.beginPacket(IP_BROADCAST, localPort);
-            Udp.write("QLP\x01\x01IAH");
-            Udp.endPacket();
+            int uuid = random(0x10000000, 0xFFFFFFFF);
+            char buf[3+1+8+1+8+1+1]; // + name
+            // %08X\
+            sprintf(buf, "IAH-%08X-%08X-", ESP.getChipId(), uuid); // + name
+            sendPacket(current_packet_type, buf, strlen(buf));
         }
-        Udp.beginPacket(IP_BROADCAST, localPort);
-        Udp.write("Nope");
-        Udp.endPacket();
     }
 }
 
