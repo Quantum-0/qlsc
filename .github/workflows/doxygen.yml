@@ -24,8 +24,8 @@ jobs:
     steps:
       - name: Doxygen
         uses: mattnotmitt/doxygen-action@v1.9.4
-        with:
+        # with:
           # github_token: ${{ secrets.GITHUB_TOKEN }}
-          doxyfile-path: './Doxyfile'
-          working-directory: '.'
+          # doxyfile-path: './Doxyfile'
+          # working-directory: '.'
           # publish_dir: ./public
