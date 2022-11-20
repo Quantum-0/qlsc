@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['ota_5finit_59',['ota_init',['../ota_8h.html#a23b4424c4425d20b3ce5a38692643871',1,'ota.h']]],
-  ['ota_5floop_60',['ota_loop',['../ota_8h.html#afc423ab006f28964d227702b9a5c9007',1,'ota.h']]]
+  ['listen_71',['listen',['../namespaceqlp.html#aa3fcb3b7fd486816cd8519b25ca0c789',1,'qlp']]],
+  ['loop_72',['loop',['../main_8cpp.html#afe461d27b9c48d5921c00d521181f12f',1,'main.cpp']]],
+  ['lsc_5finit_73',['lsc_init',['../led__strip__control_8h.html#acbdd03a9dd4b64839872e3cb56337fcc',1,'led_strip_control.h']]],
+  ['lsc_5floop_74',['lsc_loop',['../led__strip__control_8h.html#aa247f1a6aac8c2a33bd723e47c7cf683',1,'led_strip_control.h']]]
 ];

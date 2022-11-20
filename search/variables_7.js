@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['udp_80',['Udp',['../protocol_8h.html#ae2719168871b1327c58259f1d4c68577',1,'protocol.h']]]
+  ['led_5fpin_92',['led_pin',['../led__strip__control_8h.html#a7612b36c3a93fba36722724c12eee8d1',1,'led_strip_control.h']]],
+  ['localport_93',['localPort',['../protocol_8h.html#a7e570d36e4d6e38f249153f6286e6b27',1,'protocol.h']]]
 ];

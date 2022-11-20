@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['ssid_78',['ssid',['../main_8cpp.html#a587ba0cb07f02913598610049a3bbb79',1,'main.cpp']]],
-  ['strip_79',['strip',['../led__strip__control_8h.html#acf2771bd8bfaf855bbcc6c30301bf380',1,'led_strip_control.h']]]
+  ['i_5fam_5fhere_91',['I_AM_HERE',['../classqlp_1_1QLPDiscoveryPacket.html#af3f1a98db8a324932769bf190ae12cfe',1,'qlp::QLPDiscoveryPacket']]]
 ];
