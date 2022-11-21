@@ -7,7 +7,7 @@ char packetBuffer[UDP_TX_PACKET_MAX_SIZE + 1];
 
 WiFiUDP Udp;
 
-enum protocol_type_t: char {
+enum class protocol_type_t: char {
     NONE = 0,
     DISCOVERY = 1,
     BROADCAST = 2,
@@ -15,7 +15,7 @@ enum protocol_type_t: char {
     // RESPONSE = 4,
 };
 
-enum common_answer_code_t: char {
+enum class common_answer_code_t: char {
     OK = 0,
     VERSION_ERROR = 1,
     CRC_ERROR = 2,
@@ -34,34 +34,34 @@ struct protocol_packet_base {
 
 IPAddress IP_BROADCAST(255, 255, 255, 255);
 
-void sendPacket(protocol_type_t packet_type, char* data, int data_length)
+void sendPacket(protocol_type_t packet_type, char* data, size_t data_length)
 {
     char crc = 0x39;
     Udp.beginPacket(IP_BROADCAST, localPort);
     Udp.write("QLP");
-    Udp.write(PROTOCOL_VERSION)
-    Udp.write(packet_type)
-    Udp.write(data)
-    crc ^= packet_type
+    Udp.write(PROTOCOL_VERSION);
+    Udp.write((char)packet_type);
+    Udp.write(data);
+    crc ^= (char)packet_type;
     for (size_t i = 0; i < data_length; i++)
         crc ^= data[i];
-    Udp.write(crc)
+    Udp.write(crc);
     Udp.endPacket();
 }
 
-void sendCommonAnswer(protocol_type_t packet_type, common_answer_code_t code, char* data, int data_length)
+void sendCommonAnswer(protocol_type_t packet_type, common_answer_code_t code, char* data, size_t data_length)
 {
     char crc = 0xA9;
     Udp.beginPacket(IP_BROADCAST, localPort);
     Udp.write("QLP");
-    Udp.write(PROTOCOL_VERSION)
-    Udp.write(packet_type)
-    Udp.write(code)
-    Udp.write(data)
-    crc ^= packet_type
+    Udp.write(PROTOCOL_VERSION);
+    Udp.write((char)packet_type);
+    Udp.write((char)code);
+    Udp.write(data);
+    crc ^= (char)packet_type;
     for (size_t i = 0; i < data_length; i++)
         crc ^= data[i];
-    Udp.write(crc)
+    Udp.write(crc);
     Udp.endPacket();
 }
 
@@ -73,12 +73,12 @@ void sendCommonAnswer(protocol_type_t packet_type, common_answer_code_t code)
 void handle_udp()
 {
     // Check has data
-    int packetSize = Udp.parsePacket();
+    size_t packetSize = Udp.parsePacket();
     if (!packetSize)
         return;
 
     // Read
-    int n = Udp.read(packetBuffer, UDP_TX_PACKET_MAX_SIZE);
+    size_t n = Udp.read(packetBuffer, UDP_TX_PACKET_MAX_SIZE);
     packetBuffer[n] = 0;
 
     if (n < 6)
@@ -128,10 +128,9 @@ void handle_udp()
         if (strncmp(&packetBuffer[sizeof(protocol_packet_base)], "ABH", 3) == 0)
         {
             // Received ABH?
-            int uuid = random(0x10000000, 0xFFFFFFFF);
-            char buf[3+1+8+1+8+1+1]; // + name
-            // %08X\
-            sprintf(buf, "IAH-%08X-%08X-", ESP.getChipId(), uuid); // + name
+            int uuid = random(0xFFFFFFFF);
+            char buf[256];
+            sprintf(buf, "IAH-%08X-%08X-%s", ESP.getChipId(), uuid, "My Favorite Device");
             sendPacket(current_packet_type, buf, strlen(buf));
         }
     }
