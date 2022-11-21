@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['discover_5fall_5fdevices_75',['discover_all_devices',['../namespaceqlp.html#a14585e3a4f0c215334f59bb8cb289196',1,'qlp']]]
+  ['crc_83',['crc',['../classqlp_1_1QLPPacket.html#aea2565e0fa7d4e7cfc731f1118b43de0',1,'qlp::QLPPacket']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['handle_5fudp_76',['handle_udp',['../protocol_8h.html#aa5b78d7377a1dc23bdd4709c5ed7fa60',1,'protocol.h']]]
+  ['discover_5fall_5fdevices_84',['discover_all_devices',['../namespaceqlp.html#ad5d6bcec563a3874ec42127b49671b3f',1,'qlp']]]
 ];
