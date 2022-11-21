@@ -69,12 +69,11 @@ class QLPPacket:
             raise ValueError('No header', data)
         proto_version = ProtoVer(int(data[3]))
         packet_type = PacketType(int(data[4]))
-        # content = data[5:-1]
-        # crc = data[-1]
-        content = data[5:]
+        content = data[5:-1]
+        crc = data[-1]
         packet = QLPPacket(content, packet_type, proto_version, source)
-        # if packet.crc != crc:
-        # raise ValueError('Crc mismatch', data)
+        if packet.crc != crc:
+            raise ValueError('Crc mismatch', data)
         return packet
 
 
