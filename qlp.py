@@ -21,10 +21,22 @@ class QLPDiscoveryPacket:
     I_AM_HERE = b'IAH'
 
 
-# @dataclass
-# class QLSCDevice:
-#     ip: str
-#     name: str
+@dataclass
+class QLSCDevice:
+    ip: str
+    device_chip_id: str
+    device_uuid: str
+    name: str
+
+    def __hash__(self):
+        return hash(self.device_chip_id)
+
+    def __eq__(self, other):
+        return self.device_chip_id == other.device_chip_id and self.device_uuid == other.device_chip_id
+
+    def send_command(self, some_args):
+        # generate packet with received=device_id
+        pass
 
 
 @dataclass
@@ -96,6 +108,10 @@ def listen(time: int):
         return
 
 
-def discover_all_devices(timeout: int = 3) -> Set[str]:
+def discover_all_devices(timeout: int = 3) -> Set[QLSCDevice]:
     send_anybody_here()
-    return set([resp.source for resp in listen(timeout) if resp.data == QLPDiscoveryPacket.I_AM_HERE])
+    return {
+        QLSCDevice(resp.source, resp.data[4:12].decode(), resp.data[13:21].decode(), resp.data[22:].decode())
+        for resp in listen(timeout)
+        if resp.data[:3] == QLPDiscoveryPacket.I_AM_HERE
+    }
