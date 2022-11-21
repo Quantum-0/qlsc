@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ok_124',['OK',['../protocol_8h.html#a0e2c64a746e8f583855d56f1f333b580a2bc49ec37d6a5715dd23e85f1ff5bb59',1,'protocol.h']]],
-  ['other_5ferror_125',['OTHER_ERROR',['../protocol_8h.html#a0e2c64a746e8f583855d56f1f333b580abe760b0a0ddca24057cc39ceb94aff45',1,'protocol.h']]]
+  ['ok_124',['OK',['../protocol_8h.html#a0e2c64a746e8f583855d56f1f333b580ae0aa021e21dddbd6d8cecec71e9cf564',1,'protocol.h']]],
+  ['other_5ferror_125',['OTHER_ERROR',['../protocol_8h.html#a0e2c64a746e8f583855d56f1f333b580a5c0de8157fd24b5627deda20298b5c2d',1,'protocol.h']]]
 ];
