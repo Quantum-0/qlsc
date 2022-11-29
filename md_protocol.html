@@ -176,34 +176,30 @@ $(function() {
 <div class="fragment"><div class="line">flowchart  TD</div>
 <div class="line"> </div>
 <div class="line">PS((Packet Start))</div>
-<div class="line">PS --&gt; H1</div>
-<div class="line">PS --&gt; H2</div>
-<div class="line">PS --&gt; H3</div>
+<div class="line">PS --&gt; HDR</div>
+<div class="line">CRC --&gt; PE</div>
+<div class="line">PE((Packet End))</div>
 <div class="line"> </div>
 <div class="line">subgraph Protocol Header</div>
+<div class="line">HDR[&quot;Protocol Header (&#39;QLP&#39;)&quot;]</div>
+<div class="line">HDR --&gt; PV</div>
+<div class="line">PV[&quot;Protocol Version (0x01)&quot;]</div>
+<div class="line">PV --&gt; H1</div>
+<div class="line">PV --&gt; H2</div>
+<div class="line">PV --&gt; H3</div>
 <div class="line">H1[&quot;QLPD (0x01)&quot;]</div>
 <div class="line">H2[&quot;QLPC (0x02)&quot;]</div>
 <div class="line">H3[&quot;QLPB (0x03)&quot;]</div>
-<div class="line">H1 --&gt; PV1</div>
-<div class="line">H2 --&gt; PV2</div>
-<div class="line">H3 --&gt; PV3</div>
-<div class="line">PV1[&quot;Version (0x01)&quot;]</div>
-<div class="line">PV2[&quot;Version (0x01)&quot;]</div>
-<div class="line">PV3[&quot;Version (0x01)&quot;]</div>
 <div class="line">end</div>
 <div class="line"> </div>
-<div class="line">NSR --&gt; ABH</div>
-<div class="line">NSR --&gt; IAH</div>
-<div class="line">IAH--&gt; CI[Device ID] --&gt; DI1[UUID]</div>
-<div class="line">PV1 --&gt; NSR[Nothing]</div>
-<div class="line">ABH --&gt; NCD[Nothing]</div>
-<div class="line">NCD --&gt; CRC</div>
-<div class="line">DI1 --&gt; CRC</div>
+<div class="line">H1 --&gt; NSR[Nothing]</div>
+<div class="line">NSR --&gt; ABH --&gt; NCD[Nothing] --&gt; CRC</div>
+<div class="line">NSR --&gt; IAH --&gt; CI[Device ID] --&gt; DI1[UUID] --&gt; DN[Device Name] --&gt; CRC</div>
 <div class="line"> </div>
-<div class="line">PV2 --&gt; DI2[Device ID] --&gt; CID[Command ID]</div>
+<div class="line">H2 --&gt; DI2[Device ID] --&gt; CID[Command ID]</div>
 <div class="line"> </div>
-<div class="line">PV3 --&gt; BC[&quot;Broadcast (0xFF or 0x00)&quot;] --&gt; CID</div>
-<div class="line">PV3 --&gt; MC[&quot;Multicast(0x01-0xFE)&quot;] --&gt; CID</div>
+<div class="line">H3 --&gt; BC[&quot;Broadcast (0xFF or 0x00)&quot;] --&gt; CID</div>
+<div class="line">H3 --&gt; MC[&quot;Multicast(0x01-0xFE)&quot;] --&gt; CID</div>
 <div class="line"> </div>
 <div class="line">DI2[Device ID] --&gt; CR[&quot;Control Response (0x90)&quot;]</div>
 <div class="line"> </div>
@@ -232,6 +228,7 @@ $(function() {
 <div class="line">CD</div>
 <div class="line">DI1</div>
 <div class="line">NCD</div>
+<div class="line">DN</div>
 <div class="line">end</div>
 <div class="line"> </div>
 <div class="line">style RD stroke-dasharray: 5 5</div>
@@ -241,7 +238,7 @@ $(function() {
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 21 2022 18:48:53 for Quantum-Smart-Clock by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+Generated on Tue Nov 29 2022 18:21:15 for Quantum-Smart-Clock by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
 </small></address>
 </body>
 </html>
