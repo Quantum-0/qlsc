@@ -164,34 +164,30 @@ __Protocol ID = 3__
 flowchart  TD
 
 PS((Packet Start))
-PS --> H1
-PS --> H2
-PS --> H3
+PS --> HDR
+CRC --> PE
+PE((Packet End))
 
 subgraph Protocol Header
+HDR["Protocol Header ('QLP')"]
+HDR --> PV
+PV["Protocol Version (0x01)"]
+PV --> H1
+PV --> H2
+PV --> H3
 H1["QLPD (0x01)"]
 H2["QLPC (0x02)"]
 H3["QLPB (0x03)"]
-H1 --> PV1
-H2 --> PV2
-H3 --> PV3
-PV1["Version (0x01)"]
-PV2["Version (0x01)"]
-PV3["Version (0x01)"]
 end
 
-NSR --> ABH
-NSR --> IAH
-IAH--> CI[Device ID] --> DI1[UUID]
-PV1 --> NSR[Nothing]
-ABH --> NCD[Nothing]
-NCD --> CRC
-DI1 --> CRC
+H1 --> NSR[Nothing]
+NSR --> ABH --> NCD[Nothing] --> CRC
+NSR --> IAH --> CI[Device ID] --> DI1[UUID] --> DN[Device Name] --> CRC
 
-PV2 --> DI2[Device ID] --> CID[Command ID]
+H2 --> DI2[Device ID] --> CID[Command ID]
 
-PV3 --> BC["Broadcast (0xFF or 0x00)"] --> CID
-PV3 --> MC["Multicast(0x01-0xFE)"] --> CID
+H3 --> BC["Broadcast (0xFF or 0x00)"] --> CID
+H3 --> MC["Multicast(0x01-0xFE)"] --> CID
 
 DI2[Device ID] --> CR["Control Response (0x90)"]
 
@@ -220,6 +216,7 @@ CI
 CD
 DI1
 NCD
+DN
 end
 
 style RD stroke-dasharray: 5 5

@@ -26,11 +26,22 @@ enum class common_answer_code_t: char {
     OTHER_ERROR = 0xFF,
 };
 
+#pragma pack(push, 1)
 struct protocol_packet_base {
     char protocol_header[3];
     char protocol_version;
     protocol_type_t protocol_type;
 };
+
+
+struct protocol_packet_control {
+    char protocol_header[3];
+    char protocol_version;
+    protocol_type_t protocol_type;
+    unsigned long device_id;
+    unsigned char command_id;
+};
+#pragma pack(pop)
 
 IPAddress IP_BROADCAST(255, 255, 255, 255);
 
@@ -132,6 +143,50 @@ void handle_udp()
             char buf[256];
             sprintf(buf, "IAH-%08X-%08X-%s", ESP.getChipId(), uuid, "My Favorite Device");
             sendPacket(current_packet_type, buf, strlen(buf));
+        }
+    }
+
+    if (current_packet_type == protocol_type_t::CONTROL)
+    {
+        // Replace with uuid later
+        if (((protocol_packet_control*)packetBuffer)->device_id != ESP.getChipId())
+            return;
+
+        unsigned char command_id = ((protocol_packet_control*)packetBuffer)->command_id;
+        unsigned char* data_ptr = (unsigned char*)packetBuffer+sizeof(protocol_packet_control);
+        unsigned int data_len = n - sizeof(protocol_packet_control) - 1; // header and crc
+
+        if (command_id == 0x74)
+        {
+            sendCommonAnswer(protocol_type_t::CONTROL, common_answer_code_t::OK);
+            strip.fill(0);
+            strip.show();
+            ESP.reset();
+        }
+        if (command_id == 0x01)
+        {
+            if (data_len == 1)
+            {
+                strip.fill(0);
+                strip.updateLength(data_ptr[0]); // TODO: must be 2 bytes
+                strip.setPixelColor(data_ptr[0]-1, 0x0000FF);
+                strip.show(); // HERE FOR TEST
+                sendCommonAnswer(protocol_type_t::CONTROL, common_answer_code_t::OK);
+            }
+            else
+                sendCommonAnswer(protocol_type_t::CONTROL, common_answer_code_t::LENGTH_ERROR);
+        }
+        if (command_id == 0x54)
+        {
+            if (data_len == 3)
+            {
+                unsigned long color = (data_ptr[0] << 16) | (data_ptr[1] << 8) | data_ptr[2];
+                strip.fill(color);
+                strip.show(); // HERE FOR TEST
+                sendCommonAnswer(protocol_type_t::CONTROL, common_answer_code_t::OK);
+            }
+            else
+                sendCommonAnswer(protocol_type_t::CONTROL, common_answer_code_t::LENGTH_ERROR);
         }
     }
 }
