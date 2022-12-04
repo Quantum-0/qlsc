@@ -3,5 +3,5 @@ digraph "qlp.QLSCDevice"
  // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{qlp.QLSCDevice\n|+ device_chip_id\l+ device_uuid\l|+ __hash__()\l+ __eq__()\l+ send_command()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 [label="{qlp.QLSCDevice\n|+ device_chip_id\l+ device_uuid\l|+ __hash__()\l+ __eq__()\l+ send_command()\l+ set_length()\l+ fill()\l+ reboot()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
 }
