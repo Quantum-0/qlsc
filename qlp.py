@@ -2,6 +2,7 @@ import datetime
 import socket
 from dataclasses import dataclass
 from enum import IntEnum
+from struct import pack
 from typing import NewType, Optional, Set, Union
 
 __QLP_PORT__ = 52075
@@ -21,6 +22,12 @@ class QLPDiscoveryPacket:
     I_AM_HERE = b'IAH'
 
 
+class CommandID(IntEnum):
+    LENGTH = 0x01
+    FILL = 0x54
+    REBOOT = 0x74
+
+
 @dataclass
 class QLSCDevice:
     ip: str
@@ -34,16 +41,28 @@ class QLSCDevice:
     def __eq__(self, other):
         return self.device_chip_id == other.device_chip_id and self.device_uuid == other.device_chip_id
 
-    def send_command(self, some_args):
-        # generate packet with received=device_id
+    def send_command(self, command_id: CommandID, data: bytes = b''):
+        dev_id = pack('<L', int(self.device_chip_id, 16))
+        packet = QLPPacket(dev_id + command_id.to_bytes(1, 'big') + data, PacketType.CONTROL)
+        send_packet(packet)
         pass
 
+    def set_length(self, n: int):
+        self.send_command(CommandID.LENGTH, n.to_bytes(1, 'little', signed=False))
+
+    def fill(self, r: int, g: int, b: int):
+        self.send_command(CommandID.FILL, r.to_bytes(1, 'big')+g.to_bytes(1, 'big')+b.to_bytes(1, 'big'))
+
+    def reboot(self):
+        self.send_command(CommandID.REBOOT)
 
 @dataclass
 class QLPPacket:
     data: bytes
     packet_type: PacketType
     proto_version: ProtoVer = ProtoVer(1)
+    # device_id: Optional[int] = None
+    # broadcast_group: Optional[int] = None
     source: Optional[str] = None
 
     @property
@@ -78,7 +97,7 @@ class QLPPacket:
 
 
 def send_packet(packet: Union[QLPPacket, bytes]) -> None:
-    print('Sending packet', packet)
+    print('Sending packet', packet, packet.serialize().hex())
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP) as sock:
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
         sock.sendto(packet.serialize() if isinstance(packet, QLPPacket) else packet, ('255.255.255.255', __QLP_PORT__))
@@ -114,3 +133,9 @@ def discover_all_devices(timeout: int = 3) -> Set[QLSCDevice]:
         for resp in listen(timeout)
         if resp.data[:3] == QLPDiscoveryPacket.I_AM_HERE
     }
+
+
+def test():
+    my_controller = list(discover_all_devices(timeout=2))[0]
+    my_controller.set_length(30)
+    my_controller.fill(3, 1, 4)
