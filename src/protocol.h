@@ -188,6 +188,36 @@ void handle_udp()
             else
                 sendCommonAnswer(protocol_type_t::CONTROL, common_answer_code_t::LENGTH_ERROR);
         }
+        if (command_id == 0x51)
+        {
+            if (data_len == 5)
+            {
+                unsigned int index = *((unsigned int*)data_ptr);
+                unsigned long color = (data_ptr[2] << 16) | (data_ptr[3] << 8) | data_ptr[4];
+                strip.setPixelColor(index, color);
+                strip.show(); // HERE FOR TEST
+                sendCommonAnswer(protocol_type_t::CONTROL, common_answer_code_t::OK);
+            }
+            else
+                sendCommonAnswer(protocol_type_t::CONTROL, common_answer_code_t::LENGTH_ERROR);
+        }
+        if (command_id == 0x52)
+        {
+            if (data_len == 7)
+            {
+                unsigned int index1 = *((unsigned int*)data_ptr);
+                unsigned int index2 = *((unsigned int*)(data_ptr+2));
+                unsigned long color = (data_ptr[4] << 16) | (data_ptr[5] << 8) | data_ptr[6];
+                for (size_t i = index1; i < index2; i++)
+                {
+                    strip.setPixelColor(i, color);
+                }
+                strip.show(); // HERE FOR TEST
+                sendCommonAnswer(protocol_type_t::CONTROL, common_answer_code_t::OK);
+            }
+            else
+                sendCommonAnswer(protocol_type_t::CONTROL, common_answer_code_t::LENGTH_ERROR);
+        }
     }
 }
 
