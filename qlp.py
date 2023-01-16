@@ -1,5 +1,6 @@
-import datetime
+import asyncio
 import socket
+from asyncio import Queue
 from dataclasses import dataclass
 from enum import IntEnum
 from struct import pack
@@ -77,20 +78,30 @@ class QLSCDevice:
     def __eq__(self, other):
         return self.device_chip_id == other.device_chip_id and self.device_uuid == other.device_chip_id
 
-    def send_command(self, command_id: CommandID, data: bytes = b''):
+    async def send_command(self, command_id: CommandID, data: bytes = b''):
         dev_id = pack('<L', int(self.device_chip_id, 16))
-        packet = QLPPacket(dev_id + command_id.to_bytes(1, 'big') + data, PacketType.CONTROL)
-        send_packet(packet)
-        pass
+        packet = QLPPacket(dev_id + command_id + data, PacketType.CONTROL)
+        await QLPEngine()._send_packet(packet)
 
-    def set_length(self, n: int):
-        self.send_command(CommandID.LENGTH, n.to_bytes(1, 'little', signed=False))
+    async def set_length(self, n: int):
+        await self.send_command(CommandID.LENGTH, n.to_bytes(1, 'little', signed=False))
 
-    def fill(self, r: int, g: int, b: int):
-        self.send_command(CommandID.FILL, r.to_bytes(1, 'big')+g.to_bytes(1, 'big')+b.to_bytes(1, 'big'))
+    async def set_pixel_color(self, index: int, color: Color):
+        if not (0 <= index < self.length):
+            raise IndexError()
+        raise NotImplementedError()
 
-    def reboot(self):
-        self.send_command(CommandID.REBOOT)
+    async def set_line_color(self, start: int, end: int, color: Color):
+        if not (0 <= start < end < self.length):
+            raise IndexError()
+        raise NotImplementedError()
+
+    async def fill(self, color: Color):
+        await self.send_command(CommandID.FILL, bytes(color))
+
+    async def reboot(self):
+        await self.send_command(CommandID.REBOOT)
+
 
 @dataclass
 class QLPPacket:
@@ -132,46 +143,103 @@ class QLPPacket:
         return packet
 
 
-def send_packet(packet: Union[QLPPacket, bytes]) -> None:
-    print('Sending packet', packet, packet.serialize().hex())
-    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP) as sock:
-        sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-        sock.sendto(packet.serialize() if isinstance(packet, QLPPacket) else packet, ('255.255.255.255', __QLP_PORT__))
+class Singleton(type):
+    _instances: dict = {}
+
+    def __call__(cls, *args, **kwargs) -> 'Singleton':
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
 
 
-def send_anybody_here():
-    send_packet(QLPPacket(QLPDiscoveryPacket.ANYBODY_HERE, PacketType.DISCOVERY))
+class QLPError(Exception):
+    pass
 
 
-def listen(time: int):
-    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP) as sock:
-        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
-        sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+class QLPEngine(metaclass=Singleton):
+    def __init__(self):
+        self._listening: bool = False
+        self._stop_listen: bool = False
+        # self._received_packets_queue: Queue[QLPPacket] = Queue()
+        self._devices: Set[QLSCDevice] = set()
+        self._tx = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+        self._tx.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
-        sock.bind(('', __QLP_PORT__))
-        sock.settimeout(0.2)
-        now = datetime.datetime.now()
-        while (datetime.datetime.now() - now).total_seconds() < time:
-            try:
-                data, addr = sock.recvfrom(1024)
-                packet = QLPPacket.parse(data, source=addr[0])
-                print('Receiving packet', packet)
-                yield packet
-            except (ValueError, socket.timeout):
-                continue
-        return
+    def start(self):
+        if self._listening:
+            raise QLPError('QLP Listener is already started')
+        self._listening = True
+        asyncio.create_task(self.__listening_loop())
+
+    def stop(self):
+        if not self._listening:
+            raise QLPError('QLP Listener is already stopped')
+        if self._stop_listen:
+            raise QLPError('QLP Listener is already stopping')
+        self._stop_listen = True
+
+    async def __listening_loop(self):
+        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP) as sock:
+            sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+            sock.bind(('', __QLP_PORT__))
+            sock.settimeout(0.2)
+            while not self._stop_listen:
+                try:
+                    data, addr = sock.recvfrom(1024)
+                    packet = QLPPacket.parse(data, source=addr[0])
+                    print('Receiving packet', packet)
+                    self.__handle_packet(packet)
+                except (ValueError, socket.timeout):
+                    continue
+                finally:
+                    await asyncio.sleep(0.1)
+        self._stop_listen = False
+        self._listening = False
+
+    def __handle_packet(self, packet: QLPPacket):
+        if packet.data[:3] == QLPDiscoveryPacket.I_AM_HERE:
+            self._devices.add(
+                QLSCDevice(
+                    ip=packet.source,
+                    device_chip_id=packet.data[4:12].decode(),
+                    device_uuid=packet.data[13:21].decode(),
+                    name=packet.data[22:].decode()
+                )
+            )
+
+    async def _send_packet(self, packet: Union[QLPPacket, bytes]) -> None:
+        serialized_packet = packet.serialize() if isinstance(packet, QLPPacket) else packet
+        print('Sending packet', packet, serialized_packet.hex())
+        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP) as sock:
+            sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+            sock.sendto(serialized_packet, ('255.255.255.255', __QLP_PORT__))
+
+    async def discover_all_devices(self, timeout: float = 1.5) -> Set[QLSCDevice]:
+        await self._send_packet(QLPPacket(QLPDiscoveryPacket.ANYBODY_HERE, PacketType.DISCOVERY))
+        await asyncio.sleep(timeout)
+        return self._devices
 
 
-def discover_all_devices(timeout: int = 3) -> Set[QLSCDevice]:
-    send_anybody_here()
-    return {
-        QLSCDevice(resp.source, resp.data[4:12].decode(), resp.data[13:21].decode(), resp.data[22:].decode())
-        for resp in listen(timeout)
-        if resp.data[:3] == QLPDiscoveryPacket.I_AM_HERE
-    }
+async def main():
+    eng = QLPEngine()
+    eng.start()
+    eng.start()
+    await asyncio.sleep(1)
+    devs = await eng.discover_all_devices()
+    print(devs)
+    d = list(devs)[0]
+    await d.set_length(30)
+    await d.fill(Color(3, 1, 4))
+    await asyncio.sleep(5)
+    await d.reboot()
+    eng.stop()
+    eng.stop()
 
 
-def test():
-    my_controller = list(discover_all_devices(timeout=2))[0]
-    my_controller.set_length(30)
-    my_controller.fill(3, 1, 4)
+if __name__ == '__main__':
+    asyncio.run(main())
+
+
+# TODO:
+#  - this will be protocol implementation
+#  - make control panel - web ui, working with that protocol
