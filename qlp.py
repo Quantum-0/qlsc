@@ -50,7 +50,13 @@ class QLPDiscoveryPacket:
 
 class CommandID(IntEnum):
     LENGTH = 0x01
+    SET_MODE = 0x31
+    SET_PIXEL = 0x51
+    SET_LINE = 0x52
+    SET_GRADIENT = 0x53
     FILL = 0x54
+    SET_LINE_IMAGE = 0x55
+    SET_ALL_PIXELS = 0x56
     REBOOT = 0x74
 
     @property
@@ -72,6 +78,10 @@ class QLSCDevice:
     device_uuid: str
     name: str
 
+    @property
+    def length(self):
+        return 42 # for test
+
     def __hash__(self):
         return hash(self.device_chip_id)
 
@@ -89,12 +99,12 @@ class QLSCDevice:
     async def set_pixel_color(self, index: int, color: Color):
         if not (0 <= index < self.length):
             raise IndexError()
-        raise NotImplementedError()
+        await self.send_command(CommandID.SET_PIXEL, index.to_bytes(2, 'little', signed=False) + bytes(color))
 
     async def set_line_color(self, start: int, end: int, color: Color):
         if not (0 <= start < end < self.length):
             raise IndexError()
-        raise NotImplementedError()
+        await self.send_command(CommandID.SET_LINE, start.to_bytes(2, 'little', signed=False) + end.to_bytes(2, 'little', signed=False) + bytes(color))
 
     async def fill(self, color: Color):
         await self.send_command(CommandID.FILL, bytes(color))
@@ -223,17 +233,26 @@ class QLPEngine(metaclass=Singleton):
 async def main():
     eng = QLPEngine()
     eng.start()
-    eng.start()
+    # eng.start()
     await asyncio.sleep(1)
     devs = await eng.discover_all_devices()
     print(devs)
     d = list(devs)[0]
     await d.set_length(30)
-    await d.fill(Color(3, 1, 4))
+    await asyncio.sleep(1)
+    # await d.fill(Color(3, 1, 4))
+    await asyncio.sleep(1)
+    await d.set_pixel_color(5,Color(5,0,5))
+    # await d.set_line_color(2,3,Color(5,5,5))
+    # for i in range(500):
+        # await d.set_pixel_color(i % 30, Color(i%5,i%6,i%7))
+        # await asyncio.sleep(0.1)
+        # await d.set_pixel_color(i % 30, Color(0,0,0))
+        # await asyncio.sleep(0.02)
     await asyncio.sleep(5)
     await d.reboot()
     eng.stop()
-    eng.stop()
+    # eng.stop()
 
 
 if __name__ == '__main__':
