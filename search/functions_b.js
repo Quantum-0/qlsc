@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['test_120',['test',['../namespaceqlp.html#a4ad4e625cd69a76bb13daba03d4a8e62',1,'qlp']]]
+  ['ota_5finit_155',['ota_init',['../ota_8h.html#a23b4424c4425d20b3ce5a38692643871',1,'ota.h']]],
+  ['ota_5floop_156',['ota_loop',['../ota_8h.html#afc423ab006f28964d227702b9a5c9007',1,'ota.h']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['handle_5fudp_102',['handle_udp',['../protocol_8h.html#aa5b78d7377a1dc23bdd4709c5ed7fa60',1,'protocol.h']]]
+  ['discover_5fall_5fdevices_145',['discover_all_devices',['../classqlp_1_1QLPEngine.html#a56e886e9b2b0c1d2f0206716068025b7',1,'qlp::QLPEngine']]]
 ];

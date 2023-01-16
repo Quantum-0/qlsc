@@ -1,6 +1,12 @@
 var searchData=
 [
-  ['readme_2emd_64',['README.md',['../README_8md.html',1,'']]],
-  ['reboot_65',['reboot',['../classqlp_1_1QLSCDevice.html#a4cc07f7093d66435a68df39ba8d6233d',1,'qlp::QLSCDevice']]],
-  ['reboot_66',['REBOOT',['../classqlp_1_1CommandID.html#aae29cbafeda9f5437481574d0dd23258',1,'qlp::CommandID']]]
+  ['qlp_76',['qlp',['../namespaceqlp.html',1,'']]],
+  ['qlp_2epy_77',['qlp.py',['../qlp_8py.html',1,'']]],
+  ['qlpdiscoverypacket_78',['QLPDiscoveryPacket',['../classqlp_1_1QLPDiscoveryPacket.html',1,'qlp']]],
+  ['qlpengine_79',['QLPEngine',['../classqlp_1_1QLPEngine.html',1,'qlp']]],
+  ['qlperror_80',['QLPError',['../classqlp_1_1QLPError.html',1,'qlp']]],
+  ['qlppacket_81',['QLPPacket',['../classqlp_1_1QLPPacket.html',1,'qlp']]],
+  ['qlsc_82',['qlsc',['../md_README.html',1,'']]],
+  ['qlscdevice_83',['QLSCDevice',['../classqlp_1_1QLSCDevice.html',1,'qlp']]],
+  ['quantum0_27s_20led_20strip_20controller_84',['Quantum0&apos;s Led Strip Controller',['../md_protocol.html',1,'']]]
 ];

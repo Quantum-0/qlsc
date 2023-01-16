@@ -76,6 +76,8 @@ $(function() {
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1PacketType.html">PacketType</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1Color.html">Color</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1QLPDiscoveryPacket.html">QLPDiscoveryPacket</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1CommandID.html">CommandID</a></td></tr>
@@ -84,19 +86,17 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1QLPPacket.html">QLPPacket</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1Singleton.html">Singleton</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1QLPError.html">QLPError</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqlp_1_1QLPEngine.html">QLPEngine</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a436a2e75bb81e6040c037b98f9dafecc"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqlp.html#a436a2e75bb81e6040c037b98f9dafecc">send_packet</a> (Union[<a class="el" href="classqlp_1_1QLPPacket.html">QLPPacket</a>, bytes] packet)</td></tr>
-<tr class="separator:a436a2e75bb81e6040c037b98f9dafecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a009af0226f9458dac22e39d8b7b22f17"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqlp.html#a009af0226f9458dac22e39d8b7b22f17">send_anybody_here</a> ()</td></tr>
-<tr class="separator:a009af0226f9458dac22e39d8b7b22f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3fcb3b7fd486816cd8519b25ca0c789"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqlp.html#aa3fcb3b7fd486816cd8519b25ca0c789">listen</a> (int time)</td></tr>
-<tr class="separator:aa3fcb3b7fd486816cd8519b25ca0c789"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5d6bcec563a3874ec42127b49671b3f"><td class="memItemLeft" align="right" valign="top">Set[<a class="el" href="classqlp_1_1QLSCDevice.html">QLSCDevice</a>]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqlp.html#ad5d6bcec563a3874ec42127b49671b3f">discover_all_devices</a> (int timeout=3)</td></tr>
-<tr class="separator:ad5d6bcec563a3874ec42127b49671b3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ad4e625cd69a76bb13daba03d4a8e62"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqlp.html#a4ad4e625cd69a76bb13daba03d4a8e62">test</a> ()</td></tr>
-<tr class="separator:a4ad4e625cd69a76bb13daba03d4a8e62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace1bc069c46242cd3bef176aa4f1246e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqlp.html#ace1bc069c46242cd3bef176aa4f1246e">main</a> ()</td></tr>
+<tr class="separator:ace1bc069c46242cd3bef176aa4f1246e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -108,85 +108,14 @@ Variables</h2></td></tr>
 <tr class="separator:ae51020a208d90cceb8627aa07c7d8e99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ad5d6bcec563a3874ec42127b49671b3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad5d6bcec563a3874ec42127b49671b3f">&#9670;&nbsp;</a></span>discover_all_devices()</h2>
+<a id="ace1bc069c46242cd3bef176aa4f1246e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace1bc069c46242cd3bef176aa4f1246e">&#9670;&nbsp;</a></span>main()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"> Set[<a class="el" href="classqlp_1_1QLSCDevice.html">QLSCDevice</a>] qlp.discover_all_devices </td>
-          <td>(</td>
-          <td class="paramtype">int &#160;</td>
-          <td class="paramname"><em>timeout</em> = <code>3</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa3fcb3b7fd486816cd8519b25ca0c789"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3fcb3b7fd486816cd8519b25ca0c789">&#9670;&nbsp;</a></span>listen()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">def qlp.listen </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>time</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a009af0226f9458dac22e39d8b7b22f17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a009af0226f9458dac22e39d8b7b22f17">&#9670;&nbsp;</a></span>send_anybody_here()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">def qlp.send_anybody_here </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a436a2e75bb81e6040c037b98f9dafecc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a436a2e75bb81e6040c037b98f9dafecc">&#9670;&nbsp;</a></span>send_packet()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"> None qlp.send_packet </td>
-          <td>(</td>
-          <td class="paramtype">Union[<a class="el" href="classqlp_1_1QLPPacket.html">QLPPacket</a>, bytes]&#160;</td>
-          <td class="paramname"><em>packet</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4ad4e625cd69a76bb13daba03d4a8e62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ad4e625cd69a76bb13daba03d4a8e62">&#9670;&nbsp;</a></span>test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">def qlp.test </td>
+          <td class="memname">def qlp.main </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -258,7 +187,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jan 16 2023 23:30:14 for Quantum-Smart-Clock by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+Generated on Mon Jan 16 2023 23:32:20 for Quantum-Smart-Clock by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
 </small></address>
 </body>
 </html>

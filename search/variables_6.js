@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['host_134',['host',['../main_8cpp.html#ae032e164f1daa754d6fbb79d59723931',1,'main.cpp']]]
+  ['g_188',['g',['../classqlp_1_1Color.html#a5b91994d26f3769502a131ffd3e8ff89',1,'qlp::Color']]]
 ];

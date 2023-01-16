@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['crc_99',['crc',['../classqlp_1_1QLPPacket.html#aea2565e0fa7d4e7cfc731f1118b43de0',1,'qlp::QLPPacket']]]
+  ['as_5fbyte_142',['as_byte',['../classqlp_1_1CommandID.html#a6184390083e9b2266ea727ca81573ba9',1,'qlp::CommandID']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['ota_5finit_108',['ota_init',['../ota_8h.html#a23b4424c4425d20b3ce5a38692643871',1,'ota.h']]],
-  ['ota_5floop_109',['ota_loop',['../ota_8h.html#afc423ab006f28964d227702b9a5c9007',1,'ota.h']]]
+  ['handle_5fudp_148',['handle_udp',['../protocol_8h.html#aa5b78d7377a1dc23bdd4709c5ed7fa60',1,'protocol.h']]]
 ];

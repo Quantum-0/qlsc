@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ssid_148',['ssid',['../main_8cpp.html#a587ba0cb07f02913598610049a3bbb79',1,'main.cpp']]],
-  ['strip_149',['strip',['../led__strip__control_8h.html#acf2771bd8bfaf855bbcc6c30301bf380',1,'led_strip_control.h']]]
+  ['r_202',['r',['../classqlp_1_1Color.html#a5c7b747e1cdb89346b035725dbda0b62',1,'qlp::Color']]],
+  ['reboot_203',['REBOOT',['../classqlp_1_1CommandID.html#aae29cbafeda9f5437481574d0dd23258',1,'qlp::CommandID']]]
 ];

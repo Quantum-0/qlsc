@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['discover_5fall_5fdevices_100',['discover_all_devices',['../namespaceqlp.html#ad5d6bcec563a3874ec42127b49671b3f',1,'qlp']]]
+  ['b_143',['B',['../classqlp_1_1Color.html#a7edf3f72739d605fb1a52cc029e83417',1,'qlp::Color']]]
 ];
