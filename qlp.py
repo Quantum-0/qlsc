@@ -17,6 +17,31 @@ class PacketType(IntEnum):
     CONTROL = 3
 
 
+class Color:
+    def __init__(self, r: int, g: int, b: int):
+        assert 0 <= r < 256
+        assert 0 <= g < 256
+        assert 0 <= b < 256
+        self.r = r
+        self.g = g
+        self.b = b
+
+    @property
+    def R(self):
+        return self.r
+
+    @property
+    def G(self):
+        return self.g
+
+    @property
+    def B(self):
+        return self.b
+
+    def __bytes__(self):
+        return self.R.to_bytes(1, 'big') + self.G.to_bytes(1, 'big') + self.B.to_bytes(1, 'big')
+
+
 class QLPDiscoveryPacket:
     ANYBODY_HERE = b'ABH'
     I_AM_HERE = b'IAH'
@@ -27,6 +52,17 @@ class CommandID(IntEnum):
     FILL = 0x54
     REBOOT = 0x74
 
+    @property
+    def as_byte(self) -> bytes:
+        return self.value.to_bytes(1, 'big')
+
+    def __add__(self, other) -> bytes:
+        assert isinstance(other, bytes)
+        return self.as_byte + other
+
+    def __radd__(self, other) -> bytes:
+        assert isinstance(other, bytes)
+        return other + self.as_byte
 
 @dataclass
 class QLSCDevice:
