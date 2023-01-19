@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['none_194',['NONE',['../classqlp_1_1PacketType.html#a6401c8b89b90eaae0bc8cc50f97d7a28',1,'qlp::PacketType']]]
+  ['none_271',['None',['../classpacket_1_1QLPPacket.html#ab15deec94f4bf1db209c1a2594834b91',1,'packet::QLPPacket']]],
+  ['none_272',['NONE',['../classpacket__type_1_1PacketType.html#a13bfa41a49c2435f7302f7dfeb6e9198',1,'packet_type::PacketType']]]
 ];

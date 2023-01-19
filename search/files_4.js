@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['qlp_2epy_130',['qlp.py',['../qlp_8py.html',1,'']]]
+  ['led_5fstrip_5fcontrol_2eh_187',['led_strip_control.h',['../led__strip__control_8h.html',1,'']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['r_158',['R',['../classqlp_1_1Color.html#afb371b95598f53c05b8547f99fda5f3e',1,'qlp::Color']]],
-  ['reboot_159',['reboot',['../classqlp_1_1QLSCDevice.html#a4cc07f7093d66435a68df39ba8d6233d',1,'qlp::QLSCDevice']]]
+  ['r_226',['R',['../classcolor_1_1Color.html#a84b7a15f348fb31249de1c124b351e42',1,'color::Color']]],
+  ['reboot_227',['reboot',['../classdevice_1_1QLSCDevice.html#aa0b25bc3e9713f74feaeaeb3eff62fbf',1,'device::QLSCDevice']]]
 ];

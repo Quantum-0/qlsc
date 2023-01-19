@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['g_188',['g',['../classqlp_1_1Color.html#a5b91994d26f3769502a131ffd3e8ff89',1,'qlp::Color']]]
+  ['g_262',['g',['../classcolor_1_1Color.html#aeb84b6adc76a50080270b87add471a31',1,'color::Color']]]
 ];

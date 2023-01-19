@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['as_5fbyte_142',['as_byte',['../classqlp_1_1CommandID.html#a6184390083e9b2266ea727ca81573ba9',1,'qlp::CommandID']]]
+  ['b_210',['B',['../classcolor_1_1Color.html#ade0c4c67f5bb9959771f8317a48c456e',1,'color::Color']]]
 ];
