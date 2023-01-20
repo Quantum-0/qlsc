@@ -8,5 +8,6 @@ AccessModifierOffset: -2
 AlignConsecutiveMacros: true
 PointerAlignment: Left
 AllowShortFunctionsOnASingleLine: Inline
-LineEnding: LE_LF
-SortIncludes: SI_Never
+#LineEnding: LF
+UseCRLF: False
+SortIncludes: Never
