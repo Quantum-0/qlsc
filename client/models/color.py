@@ -1,6 +1,7 @@
 class Color:
     """Color structure implementation"""
     def __init__(self, r: int, g: int, b: int):
+        # TODO: raise ValueError
         assert 0 <= r < 256
         assert 0 <= g < 256
         assert 0 <= b < 256
