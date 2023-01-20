@@ -1,2 +1,10 @@
-{ BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4, UseTab: Never, Language: Cpp, AlignConsecutiveAssignments: false, AlignTrailingComments: true, ColumnLimit: 160,
-BreakBeforeTernaryOperators: true, BreakBeforeBinaryOperators: All, IndentCaseLabels: true, AllowShortFunctionsOnASingleLine: None }
+BasedOnStyle: Microsoft
+IndentWidth: 4
+
+Language: Cpp
+UseTab: Always
+ColumnLimit: 140
+AccessModifierOffset: -2
+AlignConsecutiveMacros: true
+PointerAlignment: Right
+AllowShortFunctionsOnASingleLine: Inline
