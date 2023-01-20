@@ -1,8 +1,11 @@
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from engine import QLPEngine
+
+# pylint: disable=wrong-import-position
 
 from dataclasses import dataclass
 from struct import pack
