@@ -14,7 +14,7 @@ void lsc_init()
 }
 
 void lsc_loop()
-{ 
+{
     bool odd_second = (millis() / 1000 % 2 == 0);
     bool odd_half_second = (millis() / 500 % 2 == 0);
 
@@ -30,7 +30,7 @@ void lsc_loop()
         strip.setPixelColor(0, 0xFF0000);
     else if (WiFi.status() == WL_NO_SSID_AVAIL) // Disconnected
         strip.setPixelColor(0, 0x0000FF);
-    
+
     strip.show();
 }
 

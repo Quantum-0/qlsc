@@ -7,7 +7,8 @@ char packetBuffer[UDP_TX_PACKET_MAX_SIZE + 1];
 
 WiFiUDP Udp;
 
-enum class protocol_type_t: char {
+enum class protocol_type_t : char
+{
     NONE = 0,
     DISCOVERY = 1,
     BROADCAST = 2,
@@ -15,7 +16,8 @@ enum class protocol_type_t: char {
     // RESPONSE = 4,
 };
 
-enum class common_answer_code_t: char {
+enum class common_answer_code_t : char
+{
     OK = 0,
     VERSION_ERROR = 1,
     CRC_ERROR = 2,
@@ -27,14 +29,15 @@ enum class common_answer_code_t: char {
 };
 
 #pragma pack(push, 1)
-struct protocol_packet_base {
+struct protocol_packet_base
+{
     char protocol_header[3];
     char protocol_version;
     protocol_type_t protocol_type;
 };
 
-
-struct protocol_packet_control {
+struct protocol_packet_control
+{
     char protocol_header[3];
     char protocol_version;
     protocol_type_t protocol_type;
@@ -124,10 +127,10 @@ void handle_udp()
 
     // Calc CRC
     char crc = 0x75;
-    for (size_t i = 0; i < n-1; i++)
+    for (size_t i = 0; i < n - 1; i++)
         crc ^= packetBuffer[i];
-    
-    if (crc != packetBuffer[n-1])
+
+    if (crc != packetBuffer[n - 1])
     {
         // CRC ERROR
         sendCommonAnswer(current_packet_type, common_answer_code_t::CRC_ERROR);
@@ -153,7 +156,7 @@ void handle_udp()
             return;
 
         unsigned char command_id = ((protocol_packet_control*)packetBuffer)->command_id;
-        unsigned char* data_ptr = (unsigned char*)packetBuffer+sizeof(protocol_packet_control);
+        unsigned char* data_ptr = (unsigned char*)packetBuffer + sizeof(protocol_packet_control);
         unsigned int data_len = n - sizeof(protocol_packet_control) - 1; // header and crc
 
         if (command_id == 0x74)
@@ -169,7 +172,7 @@ void handle_udp()
             {
                 strip.fill(0);
                 strip.updateLength(data_ptr[0]); // TODO: must be 2 bytes
-                strip.setPixelColor(data_ptr[0]-1, 0x0000FF);
+                strip.setPixelColor(data_ptr[0] - 1, 0x0000FF);
                 strip.show(); // HERE FOR TEST
                 sendCommonAnswer(protocol_type_t::CONTROL, common_answer_code_t::OK);
             }
@@ -206,7 +209,7 @@ void handle_udp()
             if (data_len == 7)
             {
                 unsigned int index1 = *((unsigned int*)data_ptr);
-                unsigned int index2 = *((unsigned int*)(data_ptr+2));
+                unsigned int index2 = *((unsigned int*)(data_ptr + 2));
                 unsigned long color = (data_ptr[4] << 16) | (data_ptr[5] << 8) | data_ptr[6];
                 for (size_t i = index1; i < index2; i++)
                 {

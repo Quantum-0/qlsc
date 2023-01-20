@@ -7,7 +7,7 @@ static char ota_status = 0;
 
 void ota_init()
 {
-    //ArduinoOTA.setHostname(host);
+    // ArduinoOTA.setHostname(host);
     ArduinoOTA.onStart([]() { // switch off all the PWMs during upgrade
         strip.fill(0);
         strip.setPixelColor(0, 0x4400FF);
@@ -16,7 +16,7 @@ void ota_init()
 
     ArduinoOTA.onEnd([]() { // do a fancy thing with our board led at end
         strip.fill(0);
-        strip.setPixelColor(0, 0x0077FF);        
+        strip.setPixelColor(0, 0x0077FF);
         strip.show();
     });
 
