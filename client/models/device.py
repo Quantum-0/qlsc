@@ -15,6 +15,7 @@ class QLSCDevice(QLSCDeviceBase):
         self._length = length  # noqa # TODO: Или дождаться ответа а потом обновить?
 
     async def set_pixel_color(self, index: int, color: Color):
+        # TODO: Test for that
         if not (0 <= index < self.length):
             raise IndexError()
         await self.send_command(CommandID.SET_PIXEL, index.to_bytes(2, 'little', signed=False) + bytes(color))
