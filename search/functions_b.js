@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['ota_5finit_219',['ota_init',['../ota_8h.html#a23b4424c4425d20b3ce5a38692643871',1,'ota.h']]],
-  ['ota_5floop_220',['ota_loop',['../ota_8h.html#afc423ab006f28964d227702b9a5c9007',1,'ota.h']]]
+  ['main_253',['main',['../namespacemain.html#af613cea4cba4fb7de8e40896b3368945',1,'main']]]
 ];

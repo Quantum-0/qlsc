@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['parse_221',['parse',['../classpacket_1_1QLPPacket.html#a497567b7393ae897baa7d5f213830e6e',1,'packet::QLPPacket']]]
+  ['ota_5finit_254',['ota_init',['../ota_8h.html#a23b4424c4425d20b3ce5a38692643871',1,'ota.h']]],
+  ['ota_5floop_255',['ota_loop',['../ota_8h.html#afc423ab006f28964d227702b9a5c9007',1,'ota.h']]]
 ];

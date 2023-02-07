@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['b_206',['B',['../classcolor_1_1Color.html#ade0c4c67f5bb9959771f8317a48c456e',1,'color::Color']]]
+  ['addtocrc_233',['AddToCRC',['../namespaceesp__touch.html#aacdedf18a63cd932ccad727d186c4dd9',1,'esp_touch']]]
 ];
