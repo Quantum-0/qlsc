@@ -17,7 +17,7 @@ from models.packet import QLPPacket
 
 @dataclass
 class QLSCDeviceBase:
-    ip: str  # pylint: disable=invalid-name
+    ip: str  # pylint: disable=invalid-name # TODO: type = ipaddress.IPv4Address
     device_chip_id: str
     device_uuid: str
     name: str
