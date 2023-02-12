@@ -206,7 +206,7 @@ void handle_udp()
             if (data_len == 7)
             {
                 unsigned int index1 = *((unsigned int*)data_ptr);
-                unsigned int index2 = *((unsigned int*)(data_ptr+2));
+                unsigned int index2 = *((unsigned int*)(&data_ptr[2]));
                 unsigned long color = (data_ptr[4] << 16) | (data_ptr[5] << 8) | data_ptr[6];
                 for (size_t i = index1; i < index2; i++)
                 {
@@ -220,7 +220,7 @@ void handle_udp()
         }
     }
 }
-
+ 
 // struct protocol_packet_broadcast
 // {
 //     char protocol_header[3];
