@@ -16,6 +16,15 @@ class QLPEngine(metaclass=Singleton):
     """Engine for Quantum0's LED Strip Protocol, allows to interact with devices"""
     __QLP_PORT__ = 52075
 
+    # TODO: Add something kinda request_response list
+    #  Цель:
+    #   - функция отправки команды девайсу должна дождаться ответа или упасть с таймаут еррором
+    #   - несколько таймаут ерроров - удаляем девайс из списка
+    #   - если девайсу была отправлена команда - лочить выполнение следующей отправки пока предыдущая не будет завершена
+    #     dict[device_id, lock] ?
+    #   - НЕ лочить параллельную отправку двум или более девайсам
+    #   - добавить в протокол байт - счетчик команды
+
     def __init__(self):
         self._listening: bool = False
         self._stop_listen: bool = False
