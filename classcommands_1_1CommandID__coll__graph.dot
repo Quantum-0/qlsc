@@ -3,7 +3,7 @@ digraph "commands.CommandID"
  // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{commands.CommandID\n|+ LENGTH\l+ SET_MODE\l+ SET_PIXEL\l+ SET_LINE\l+ SET_GRADIENT\l+ FILL\l+ SET_LINE_IMAGE\l+ SET_ALL_PIXELS\l+ REBOOT\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 [label="{commands.CommandID\n|+ LENGTH\l+ MAX_CURRENT\l+ SET_MASTER\l+ GET_MASTER\l+ SYNC_PACKET\l+ MULTICAST_GROUP\l+ RESPONSE_MULTICAST\l_GROUP\l+ SET_MODE\l+ SET_COLOR\l+ SET_SPEED\l+ SET_BRIGHTNESS\l+ SET_SHIFT\l+ SET_SHAPE\l+ SET_PARAM1\l+ SET_PARAM2\l+ SET_PIXEL\l+ SET_LINE\l+ SET_GRADIENT\l+ FILL\l+ SET_LINE_IMAGE\l+ SET_ALL_PIXELS\l+ ENCRYPTION\l+ VERSION\l+ RESET_ID\l+ REBOOT\l+ FULL_RESET\l+ TIME_SERVER\l+ SET_TIME\l+ SET_TIMER\l+ GET_TIMER\l+ COMMON_RESPONSE\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
   Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
   Node2 [label="{OneByteSerializableEnum\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
 }

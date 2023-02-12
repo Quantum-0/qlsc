@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['g_245',['G',['../classcolor_1_1Color.html#a56f350d260b66a670932986b00c3348e',1,'color::Color']]],
-  ['getclientsocket_246',['getClientSocket',['../namespaceesp__touch.html#a2d671f4470a3b8eafb6ac3e3f26d81ad',1,'esp_touch']]],
-  ['getdatacode_247',['getDataCode',['../namespaceesp__touch.html#a37efa3b59674794993da3da2fb6a7ccd',1,'esp_touch']]],
-  ['getdatumcode_248',['getDatumCode',['../namespaceesp__touch.html#a3ef4279629750bc310064ea282f9c180',1,'esp_touch']]],
-  ['getguidecode_249',['getGuideCode',['../namespaceesp__touch.html#abe639bbfcd1b60c0454133983e30dc9c',1,'esp_touch']]],
-  ['getnexttargetaddress_250',['getNextTargetAddress',['../namespaceesp__touch.html#a8a79dcff48e1b9ab00eb8f1267cf926d',1,'esp_touch']]]
+  ['g_295',['G',['../classcolor_1_1Color.html#aea8464f5f9c387eb728411ef258ebad9',1,'color::Color']]],
+  ['getclientsocket_296',['getClientSocket',['../namespaceesp__touch.html#a2d671f4470a3b8eafb6ac3e3f26d81ad',1,'esp_touch']]],
+  ['getdatacode_297',['getDataCode',['../namespaceesp__touch.html#a37efa3b59674794993da3da2fb6a7ccd',1,'esp_touch']]],
+  ['getdatumcode_298',['getDatumCode',['../namespaceesp__touch.html#a3ef4279629750bc310064ea282f9c180',1,'esp_touch']]],
+  ['getguidecode_299',['getGuideCode',['../namespaceesp__touch.html#abe639bbfcd1b60c0454133983e30dc9c',1,'esp_touch']]],
+  ['getnexttargetaddress_300',['getNextTargetAddress',['../namespaceesp__touch.html#a8a79dcff48e1b9ab00eb8f1267cf926d',1,'esp_touch']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['b_239',['B',['../classcolor_1_1Color.html#ade0c4c67f5bb9959771f8317a48c456e',1,'color::Color']]]
+  ['b_287',['B',['../classcolor_1_1Color.html#a6c1f91653e8d4e32469886027935a00c',1,'color::Color']]]
 ];

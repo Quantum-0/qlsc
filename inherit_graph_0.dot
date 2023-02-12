@@ -7,6 +7,6 @@ digraph "Graphical Class Hierarchy"
   Node0 [label="byte_serializable.ByteSerializable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classbyte__serializable_1_1ByteSerializable.html",tooltip=" "];
   Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 [label="byte_serializable.OneByte\lSerializableEnum",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classbyte__serializable_1_1OneByteSerializableEnum.html",tooltip=" "];
-  Node14 [label="IntEnum",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node14 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="IntEnum",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node17 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }
