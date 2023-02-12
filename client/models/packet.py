@@ -2,9 +2,9 @@ import logging
 from dataclasses import dataclass, field
 from typing import NewType, Optional, ClassVar
 
-from enums.commands import CommandID
+# from enums.commands import CommandID
 from enums.packet_type import PacketType
-from exceptions.protocol_exceptions import QLPError
+# from exceptions.protocol_exceptions import QLPError
 
 __PROTO_HEADER__ = b'QLP'
 ProtoVer = NewType('ProtoVer', int)
