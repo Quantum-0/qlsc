@@ -1,9 +1,10 @@
+---
 name: 'Yamllint GitHub Actions'
-on:
+on:  # yamllint disable-line rule:truthy
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 jobs:
   yamllint:
     name: 'Yamllint'
@@ -15,6 +16,7 @@ jobs:
         uses: karancode/yamllint-github-action@master
         with:
           # yamllint_file_or_dir: .
+          yamllint_format: github
           yamllint_strict: false
           yamllint_comment: true
         env:

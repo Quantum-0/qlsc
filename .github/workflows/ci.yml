@@ -1,10 +1,11 @@
+---
 name: CI
 
-on:
+on:  # yamllint disable-line rule:truthy
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
   workflow_dispatch:
 
@@ -14,12 +15,12 @@ jobs:
     name: C++ Formatting Check
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Run clang-format style check for C/C++/Protobuf programs.
-      uses: jidicula/clang-format-action@v4.9.0
-      with:
-        clang-format-version: '13'
-        check-path: 'src'
+      - uses: actions/checkout@v3
+      - name: Run clang-format style check for C/C++/Protobuf programs.
+        uses: jidicula/clang-format-action@v4.9.0
+        with:
+          clang-format-version: '13'
+          check-path: 'src'
 
 #  yaml-formatting-check:
 #    name: YAML Formatting Check
@@ -34,16 +35,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Doxygen
-      run: |
-        sudo apt-get install -y doxygen
-        pwd
-        ls -al
-        doxygen Doxyfile
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3.7.3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./DOCS/html
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Doxygen
+        run: |
+          sudo apt-get install -y doxygen
+          pwd
+          ls -al
+          doxygen Doxyfile
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./DOCS/html
