@@ -16,14 +16,19 @@ class QLSCDevice(QLSCDeviceBase):
 
     async def set_pixel_color(self, index: int, color: Color):
         # TODO: Test for that
-        if not (0 <= index < self.length):
+        if not 0 <= index < self.length:
             raise IndexError()
         await self.send_command(CommandID.SET_PIXEL, index.to_bytes(2, 'little', signed=False) + bytes(color))
 
     async def set_line_color(self, start: int, end: int, color: Color):
-        if not (0 <= start < end < self.length):
+        if not 0 <= start < end < self.length:
             raise IndexError()
-        await self.send_command(CommandID.SET_LINE, start.to_bytes(2, 'little', signed=False) + end.to_bytes(2, 'little', signed=False) + bytes(color))
+        await self.send_command(
+            CommandID.SET_LINE,
+            start.to_bytes(2, 'little', signed=False)
+            + end.to_bytes(2, 'little', signed=False)
+            + bytes(color)
+        )
 
     async def fill(self, color: Color):
         await self.send_command(CommandID.FILL, bytes(color))

@@ -10,8 +10,8 @@ on:
 
 jobs:
 
-  formatting-check:
-    name: Formatting Check
+  cpp-formatting-check:
+    name: C++ Formatting Check
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -20,6 +20,15 @@ jobs:
       with:
         clang-format-version: '13'
         check-path: 'src'
+
+#  yaml-formatting-check:
+#    name: YAML Formatting Check
+#
+#  python-formatting-check:
+#    name: Python Formatting Check
+#
+#  python-isort-check:
+#    name: Python Imports Check
 
   docs:
     runs-on: ubuntu-latest
@@ -33,7 +42,6 @@ jobs:
         pwd
         ls -al
         doxygen Doxyfile
-        
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3.7.3
       with:

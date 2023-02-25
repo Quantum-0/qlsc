@@ -1,23 +1,22 @@
 from __future__ import annotations
 
+from struct import pack
 from typing import TYPE_CHECKING
 
-import pydantic
-from pydantic import Field
+from pydantic import Field, BaseModel
 
 if TYPE_CHECKING:
     from engine import QLPEngine
 
 # pylint: disable=wrong-import-position
 
-from struct import pack
-
 from enums.commands import CommandID
 from enums.packet_type import PacketType
 from models.packet import QLPPacket
 
 
-class QLSCDeviceBase(pydantic.BaseModel):
+class QLSCDeviceBase(BaseModel):
+    """QLSC Device base class, containing internal logic"""
     ip: str  # pylint: disable=invalid-name # TODO: type = ipaddress.IPv4Address
     device_chip_id: str
     device_uuid: str

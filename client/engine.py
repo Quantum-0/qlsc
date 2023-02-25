@@ -12,6 +12,7 @@ from utils.singleton import Singleton
 
 logger = logging.getLogger('Engine')
 
+
 class QLPEngine(metaclass=Singleton):
     """Engine for Quantum0's LED Strip Protocol, allows to interact with devices"""
     __QLP_PORT__ = 52075
@@ -39,7 +40,7 @@ class QLPEngine(metaclass=Singleton):
         for device in self._devices:
             if device.device_uuid == device_uuid:
                 return device
-        logger.info(f'Device with uuid="{device_uuid}" was not found')
+        logger.info('Device with uuid="%s" was not found', device_uuid)
         return None
 
     def start(self):
@@ -68,8 +69,8 @@ class QLPEngine(metaclass=Singleton):
                     if data == self.__just_send_packet:
                         continue
                     packet = QLPPacket.parse(data, source=addr[0])
-                    logger.info('<<<< RX: {}'.format(data.hex(' ').upper()))
-                    logger.debug('Receiving packet: {}'.format(packet))
+                    logger.info('<<<< RX: %s', data.hex(' ').upper())
+                    logger.debug('Receiving packet: %s', packet)
                     self.__handle_packet(packet)
                 except (ValueError, socket.timeout):
                     continue
@@ -82,18 +83,18 @@ class QLPEngine(metaclass=Singleton):
     def __handle_packet(self, packet: QLPPacket):
         if packet.data[:3] == dpb.I_AM_HERE:
             new_dev = QLSCDevice(
-                    ip=packet.source,
-                    device_chip_id=packet.data[4:12].decode(),
-                    device_uuid=packet.data[13:21].decode(),
-                    name=packet.data[22:].decode(),
-                    _engine=self,
-                )
+                ip=packet.source,
+                device_chip_id=packet.data[4:12].decode(),
+                device_uuid=packet.data[13:21].decode(),
+                name=packet.data[22:].decode(),
+                _engine=self,
+            )
             self._devices.add(new_dev)
 
     async def _send_packet(self, packet: Union[QLPPacket, bytes]) -> None:
         serialized_packet = packet.serialize() if isinstance(packet, QLPPacket) else packet
-        logger.info('>>>> TX: {}'.format(serialized_packet.hex(' ').upper()))
-        logger.debug('Sending packet: {}'.format(str(packet)))
+        logger.info('>>>> TX: %s', serialized_packet.hex(' ').upper())
+        logger.debug('Sending packet: %s', packet)
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP) as sock:
             sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
             sock.sendto(serialized_packet, ('255.255.255.255', self.__QLP_PORT__))

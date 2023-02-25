@@ -14,6 +14,7 @@ logger = logging.getLogger('Packet')
 
 @dataclass
 class QLPPacket:
+    """Wrapper for raw bytes packet allowing to write or read serialized data from it and also checking crc"""
     data: bytes
     packet_type: PacketType
     proto_version: ProtoVer = field(default=ProtoVer(1), repr=False)

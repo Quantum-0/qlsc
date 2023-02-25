@@ -1,4 +1,5 @@
 # Source: https://github.com/KurdyMalloy/EsptouchPython
+# pylint: disable=all
 
 import socket
 import time

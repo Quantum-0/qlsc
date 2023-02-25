@@ -2,7 +2,8 @@ import abc
 from enum import IntEnum
 
 
-class ByteSerializable():
+class ByteSerializable:
+    """Abstract class for byte-serializable entity using in protocol"""
     @abc.abstractmethod
     def __bytes__(self) -> bytes:
         raise NotImplementedError('Must be implemented for that class')
@@ -23,5 +24,6 @@ class ByteSerializable():
 
 
 class OneByteSerializableEnum(ByteSerializable, IntEnum):
+    """Abstract class for byte-serializable enum using in protocol"""
     def __bytes__(self) -> bytes:
         return self.value.to_bytes(1, 'big')
