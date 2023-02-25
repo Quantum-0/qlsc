@@ -1,12 +1,11 @@
 var searchData=
 [
-  ['d_50',['d',['../main_8cpp.html#a6f364afbe132c4ecfea48bde1b0618ba',1,'main.cpp']]],
-  ['data_51',['data',['../namespaceesp__touch.html#ac19ed11db190261bd19fefa6a84e7fc5',1,'esp_touch']]],
-  ['datatosend_52',['dataToSend',['../namespaceesp__touch.html#a80baf3826d6a7ad9429aba67db474c62',1,'esp_touch']]],
-  ['default_53',['default',['../classpacket_1_1QLPPacket.html#a1393088d11984524afc86c4eb8d43cdc',1,'packet::QLPPacket']]],
-  ['device_54',['device',['../namespacedevice.html',1,'device'],['../classprotocol__exceptions_1_1QLPResponseWithError.html#a5aedaf785cbb9afbb61d25ce803467e4',1,'protocol_exceptions.QLPResponseWithError.device()']]],
-  ['device_55',['Device',['../classdevice_1_1Device.html',1,'device']]],
-  ['device_2epy_56',['device.py',['../models_2device_8py.html',1,'(Global Namespace)'],['../web_2models_2device_8py.html',1,'(Global Namespace)']]],
+  ['d_51',['d',['../main_8cpp.html#a6f364afbe132c4ecfea48bde1b0618ba',1,'main.cpp']]],
+  ['data_52',['data',['../namespaceesp__touch.html#ac19ed11db190261bd19fefa6a84e7fc5',1,'esp_touch']]],
+  ['datatosend_53',['dataToSend',['../namespaceesp__touch.html#a80baf3826d6a7ad9429aba67db474c62',1,'esp_touch']]],
+  ['default_54',['default',['../classdevice__base_1_1QLSCDeviceBase.html#a8be4623a7461e69d499faad9e0d60d4b',1,'device_base.QLSCDeviceBase.default()'],['../classpacket_1_1QLPPacket.html#a1393088d11984524afc86c4eb8d43cdc',1,'packet.QLPPacket.default()']]],
+  ['device_55',['device',['../classprotocol__exceptions_1_1QLPResponseWithError.html#a5aedaf785cbb9afbb61d25ce803467e4',1,'protocol_exceptions.QLPResponseWithError.device()'],['../namespacedevice.html',1,'device']]],
+  ['device_2epy_56',['device.py',['../device_8py.html',1,'']]],
   ['device_5fbase_57',['device_base',['../namespacedevice__base.html',1,'']]],
   ['device_5fbase_2epy_58',['device_base.py',['../device__base_8py.html',1,'']]],
   ['device_5fchip_5fid_59',['device_chip_id',['../classdevice__base_1_1QLSCDeviceBase.html#a4f6bcd9f576a37892b7e4ce76b00dd2c',1,'device_base::QLSCDeviceBase']]],
