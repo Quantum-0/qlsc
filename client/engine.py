@@ -1,7 +1,7 @@
 import asyncio
 import logging
 import socket
-from typing import Set, Union
+from typing import Set, Union, Optional
 
 import enums.discovery_packet_body as dpb
 from enums.packet_type import PacketType
@@ -34,6 +34,13 @@ class QLPEngine(metaclass=Singleton):
         self._tx.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
         self.__just_send_packet = None
         logger.debug('Engine was created')
+
+    def __getitem__(self, device_uuid: str) -> Optional[QLSCDevice]:
+        for device in self._devices:
+            if device.device_uuid == device_uuid:
+                return device
+        logger.info(f'Device with uuid="{device_uuid}" was not found')
+        return None
 
     def start(self):
         if self._listening:
