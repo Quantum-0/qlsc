@@ -1,5 +1,5 @@
 ---
-name: CI
+name: Doxygen
 
 on:  # yamllint disable-line rule:truthy
   push:
@@ -10,27 +10,6 @@ on:  # yamllint disable-line rule:truthy
   workflow_dispatch:
 
 jobs:
-
-  cpp-formatting-check:
-    name: C++ Formatting Check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run clang-format style check for C/C++/Protobuf programs.
-        uses: jidicula/clang-format-action@v4.9.0
-        with:
-          clang-format-version: '13'
-          check-path: 'src'
-
-#  yaml-formatting-check:
-#    name: YAML Formatting Check
-#
-#  python-formatting-check:
-#    name: Python Formatting Check
-#
-#  python-isort-check:
-#    name: Python Imports Check
-
   docs:
     runs-on: ubuntu-latest
 
