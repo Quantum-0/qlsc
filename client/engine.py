@@ -10,6 +10,7 @@ from enums.packet_type import PacketType
 from exceptions.protocol_exceptions import QLPError
 from models.device import QLSCDevice
 from models.packet import QLPPacket
+from utils.esp_touch import init as esp_touch_init, sendData as esp_touch_send_data
 from utils.singleton import Singleton
 
 logger = logging.getLogger('Engine')
@@ -110,7 +111,8 @@ class QLPEngine(metaclass=Singleton):
                 del self.__packets[packet.device_id]
             else:
                 logger.debug(
-                    'Command counter is incorrect. Wait for %s, received %s. Probably that was response to another client',
+                    'Command counter is incorrect. Wait for %s, received %s. '
+                    'Probably that was response to another client',
                     packet_counter,
                     packet.packet_counter,
                 )
@@ -150,3 +152,8 @@ class QLPEngine(metaclass=Singleton):
         await self._send_packet(QLPPacket(dpb.ANYBODY_HERE, PacketType.DISCOVERY))
         await asyncio.sleep(timeout)
         return self._devices
+
+    @staticmethod
+    def connect_new_devices(ssid: str, password: str):
+        esp_touch_init(ssid, password, 'T', '255.255.255.255', None)
+        esp_touch_send_data()
