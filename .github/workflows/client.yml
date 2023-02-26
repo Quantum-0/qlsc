@@ -1,0 +1,48 @@
+---
+name: Python client CI
+
+on:  # yamllint disable-line rule:truthy
+  - push
+
+jobs:
+  isort:
+    name: Imports check [isort]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: isort/isort-action@v1.0.0
+#        with:
+#          requirements-files: "requirements.txt requirements-test.txt"
+
+  pylint:
+    name: Linting [Pylint]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pylint
+      - name: Analysing the code with pylint
+        run: |
+          pylint $(git ls-files 'client/**.py')
+
+  mypy:
+    name: Typing check [Mypy]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: jpetrucciani/mypy-check@master
+        with:
+          path: 'client/**.py'
+
+  bandit:
+    name: Security check [Bandit]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: jpetrucciani/bandit-check@main
