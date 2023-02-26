@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: isort/isort-action@v1.0.0
         with:
-          requirements-files: "client/requirements.txt"
+          requirementsFiles: "client/requirements.txt"
 
   pylint:
     name: Linting [Pylint]
