@@ -18,14 +18,15 @@ class QLPPacket:
     data: bytes
     packet_type: PacketType
     proto_version: ProtoVer = field(default=ProtoVer(1), repr=False)
-    # device_id: Optional[int] = None
-    # broadcast_group: Optional[int] = None
     source: Optional[str] = None
     packet_counter: ClassVar[int] = 0
-    packet_id: int = field(default=None, repr=False)
+    packet_id: Optional[int] = field(default=None, repr=False)
+
+    device_id: Optional[str] = None
+    # broadcast_group: Optional[int] = None
 
     def __post_init__(self):
-        self.packet_id = self.__class__.packet_counter
+        self.packet_id = self.packet_id or self.__class__.packet_counter
         self.__class__.packet_counter += 1
         # TODO: check command here
 
@@ -48,7 +49,9 @@ class QLPPacket:
             __PROTO_HEADER__
             + self.proto_version.to_bytes(1, 'big')
             + self.packet_type.value.to_bytes(1, 'big')
-            + b''  # TODO: Receiver???
+            # TODO: NOT IMPLEMENTED ON FIRMWARE YET:
+            #  + (self.packet_counter.to_bytes(1, 'big') if self.packet_type == PacketType.CONTROL else b'')
+            #  + b''  # TODO: Receiver???
             + self.data
             + (self.crc.to_bytes(1, 'big') if with_crc else b'')
         )
@@ -59,9 +62,10 @@ class QLPPacket:
             raise ValueError('No header', data)
         proto_version = ProtoVer(int(data[3]))
         packet_type = PacketType(int(data[4]))
-        content = data[5:-1]
+        packet_id = int(data[5]) if packet_type == PacketType.CONTROL else None
+        content = data[5:-1] if packet_type != PacketType.CONTROL else data[6:-1]
         crc = data[-1]
-        packet = QLPPacket(content, packet_type, proto_version, source)
+        packet = QLPPacket(content, packet_type, proto_version, source, packet_id=packet_id)
         if packet.crc != crc:
             raise ValueError('Crc mismatch', data)
         return packet

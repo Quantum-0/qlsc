@@ -6,13 +6,9 @@ from models.device_base import QLSCDeviceBase
 class QLSCDevice(QLSCDeviceBase):
     """Device's business logic inherited from internal logic"""
 
-    @property
-    def length(self):
-        return self._length
-
     async def set_length(self, length: int):
         await self.send_command(CommandID.LENGTH, length.to_bytes(1, 'little', signed=False))
-        self._length = length  # noqa # TODO: Или дождаться ответа а потом обновить?
+        # self._length = length  # noqa # TODO: Или дождаться ответа а потом обновить?
 
     async def set_pixel_color(self, index: int, color: Color):
         # TODO: Test for that
