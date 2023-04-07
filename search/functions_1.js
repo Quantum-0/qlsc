@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['addtocrc_285',['AddToCRC',['../namespaceesp__touch.html#aacdedf18a63cd932ccad727d186c4dd9',1,'esp_touch']]]
+  ['addtocrc_284',['AddToCRC',['../namespaceesp__touch.html#aacdedf18a63cd932ccad727d186c4dd9',1,'esp_touch']]]
 ];
