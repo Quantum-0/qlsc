@@ -94,8 +94,8 @@ class QLPEngine(metaclass=Singleton):
                 device_chip_id=packet.data[4:12].decode(),
                 device_uuid=packet.data[13:21].decode(),
                 name=packet.data[22:].decode(),
-                engine=self,
             )
+            new_dev.set_engine(self)
             self._devices.add(new_dev)
         if packet.device_id is not None:
             if packet.device_id not in self.__packets:

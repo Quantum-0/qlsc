@@ -24,7 +24,7 @@ class QLSCDeviceBase(BaseModel):
     device_chip_id: str
     device_uuid: str
     name: str
-    engine: QLPEngine = Field(exclude=True, default=None)
+    engine: QLPEngine | None = Field(exclude=True, default=None)
     length: int = Field(default=0)
 
     def __hash__(self):
@@ -41,6 +41,7 @@ class QLSCDeviceBase(BaseModel):
         self.engine = engine
 
     async def send_command(self, command_id: CommandID, data: bytes = b''):
+        assert self.engine is not None
         dev_id = pack('<L', int(self.device_chip_id, 16))
         packet = QLPPacket(dev_id + command_id + data, PacketType.CONTROL, device_id=self.device_uuid)
         await self.engine._send_packet(packet)  # noqa # pylint: disable=protected-access
